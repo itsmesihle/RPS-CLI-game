@@ -1,0 +1,8 @@
+timestamp,user_choice,computer_choice,winner
+2025-11-25T06:21:46,r,p,computer
+2025-11-25T06:21:47,r,r,draw
+2025-11-25T06:21:49,r,s,user
+2025-11-25T06:21:50,r,p,computer
+2025-11-25T06:22:45,r,p,computer
+2025-11-25T06:22:46,r,s,user
+2025-11-25T06:22:47,r,s,user
