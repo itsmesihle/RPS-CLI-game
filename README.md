@@ -48,8 +48,6 @@ After the set number of rounds, a final scoreboard summary is displayed. After w
 - Working with external libraries
 - Use of the `__name__ == "__main__"` guard
 
----
-
 ### **Intermediate Concepts**
 
 - File handling (CSV reading/writing)
@@ -57,8 +55,6 @@ After the set number of rounds, a final scoreboard summary is displayed. After w
 - Using 3rd‑party modules (`pyfiglet`)
 - Clean code structuring
 - Separation of concerns in functions
-
----
 
 ### **Soft Skills Demonstrated**
 
@@ -78,8 +74,6 @@ After the set number of rounds, a final scoreboard summary is displayed. After w
 - `os` – file checking
 - `json` – used in development/testing
 
----
-
 ### **Third-Party Libraries**
 
 - **pyfiglet** → ASCII‑art title screen
@@ -93,14 +87,14 @@ Install with:
 
 ```
 .
-├── RPS_game.py
+├── project.py
+├── requirements.txt
 ├── RPS_game_data.csv
+├── test_project.py
 └── README.md
 ```
 
----
-
-### `RPS_game.py`
+### `project.py`
 
 Contains all game logic:
 
@@ -110,7 +104,13 @@ Contains all game logic:
 - CSV logging
 - Scoreboard output
 
----
+### `requirements.txt`
+
+Contains all the requirements, dependencies necessary to run the game and the tests:
+
+- Python (>3.8)
+- Pyfiglet
+- Pytest
 
 ### `RPS_game_data.csv`
 
@@ -121,9 +121,24 @@ Stores:
 - Computer choice
 - Round result
 
+### **`test_project.py`**
+
+- uses Pytest to test the working order of the functions project.py by importing its modules
+- _add more descriptive_
+
+### \*_`README.md`_
+
+- Contains documentation of the project
+
 ---
 
 ## ▶️ **How to Run the Game**
+
+### **Option A: automatic install**
+
+- _how to automatically install_
+
+### **Option B: manual install**
 
 1. Install Python (≥3.8)
 2. Install dependencies:
@@ -138,7 +153,9 @@ pip install pyfiglet
 python RPS_game.py
 ```
 
----
+## 📝 **Current Status of Project**
+
+- This RPS game is still being worked on, constantly being updated
 
 ## 📝 **Future Improvements**
 
