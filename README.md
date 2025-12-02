@@ -78,7 +78,7 @@ After the set number of rounds, a final scoreboard summary is displayed. After w
 
 - **pyfiglet** → ASCII‑art title screen
 
-Install with:
+Manual install with:
 `bash\pip install pyfiglet`
 
 ---
@@ -128,11 +128,11 @@ Stores:
 
 ### **`README.md`**
 
-- Contains documentation of the project
+- Contains documentation of the project.
 
 ---
 
-## ▶️ **How to Run the game**
+## ▶️ **How to Run the game, and the tests**
 
 ### **Option A: automatic install**
 
@@ -145,7 +145,13 @@ insert code
 2. Run the game:
 
 ```bash
-python RPS_game.py
+python project.py
+```
+
+3. Run the tests:
+
+```bash
+pytest test_project.py
 ```
 
 ### **Option B: manual install**
@@ -160,12 +166,14 @@ pip install pyfiglet
 3. Run the game:
 
 ```bash
-python RPS_game.py
+python project.py
 ```
 
-## **How to Run the the tests**
+4. Run the tests:
 
-...
+```bash
+pytest test_project.py
+```
 
 ---
 
@@ -178,6 +186,7 @@ This RPS game is still being worked on, constantly being updated
 - Add difficulty modes
 - Add analytics dashboard from CSV
 - Add persistent user profiles
+- Replace ASCII-art with animation
 
 ---
 
