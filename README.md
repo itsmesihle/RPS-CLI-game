@@ -41,6 +41,8 @@ After the set number of rounds, a final scoreboard summary is displayed.
 - Working with external libraries
 - Use of the `__name__ == "__main__"` guard
 
+---
+
 ### **Intermediate Concepts**
 
 - File handling (CSV reading/writing)
@@ -48,6 +50,8 @@ After the set number of rounds, a final scoreboard summary is displayed.
 - Using 3rd‑party modules (`pyfiglet`)
 - Clean code structuring
 - Separation of concerns in functions
+
+---
 
 ### **Soft Skills Demonstrated**
 
@@ -67,6 +71,8 @@ After the set number of rounds, a final scoreboard summary is displayed.
 - `os` – file checking
 - `json` – used in development/testing
 
+---
+
 ### **Third-Party Libraries**
 
 - **pyfiglet** → ASCII‑art title screen
@@ -85,6 +91,8 @@ Install with:
 └── README.md
 ```
 
+---
+
 ### `RPS_game.py`
 
 Contains all game logic:
@@ -94,6 +102,8 @@ Contains all game logic:
 - Winner determination
 - CSV logging
 - Scoreboard output
+
+---
 
 ### `RPS_game_data.csv`
 
@@ -143,6 +153,8 @@ Clean code formatting
 
 Explanatory comments when needed
 
+---
+
 ## 🐛 **Issues**
 
 If you encounter bugs, crashes, or unexpected behavior, feel free to open an Issue on the repository. Please include:
@@ -153,10 +165,14 @@ Expected vs actual behavior
 
 Screenshots or logs (if applicable)
 
+---
+
 ## 📄 **License**
 
-This project is licensed under the MIT License — you are free to use, modify, and distribute it.
+This project is licensed under the MIT License - you are free to use, modify, and distribute it.
+
+---
 
 ## 🙌 **Credits**
 
-Created by **Sihle** — showcasing CS50P skills through a structured, logged, and playful Python application.
+Created by **Sihle - @itsmesihle**, showcasing skills learnt through the Harvard University's CS50P course in a structured, logged, and playful Python application.
