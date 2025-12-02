@@ -126,23 +126,27 @@ Stores:
 - uses Pytest to test the working order of the functions project.py by importing its modules
 - _add more descriptive_
 
-### \*_`README.md`_
+### **`README.md`**
 
 - Contains documentation of the project
 
 ---
 
-## ▶️ **How to Run the Game**
+## ▶️ **How to Run the game**
 
 ### **Option A: automatic install**
 
 1. _how to automatically install_:
 
-```
+```bash
 insert code
 ```
 
-2.
+2. Run the game:
+
+```bash
+python RPS_game.py
+```
 
 ### **Option B: manual install**
 
@@ -159,11 +163,17 @@ pip install pyfiglet
 python RPS_game.py
 ```
 
-## 📝 **Current Status of Project**
+## **How to Run the the tests**
+
+...
+
+---
+
+## 📝 **Status of Project**
 
 This RPS game is still being worked on, constantly being updated
 
-## 📝 **Future Improvements**
+### 📝 **Future Improvements**
 
 - Add difficulty modes
 - Add analytics dashboard from CSV
