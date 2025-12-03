@@ -138,31 +138,31 @@ Stores:
 cd path/to/your/project
 ```
 
-2. Install or update Python (Windows):
+2. Install or update Python (≥3.8) on Windows:
 
 ```bash
-# ---Install Python (≥3.8)---
+# --- Install Python ---
 winget install Python.Python.3
 ```
 
 OR
 
 ```bash
-# ---Upgrade Python (≥3.8)---
+# --- Upgrade Python ---
 winget upgrade Python.Python.3
 ```
 
 3. Install dependencies:
 
 ```bash
-# ---Automatically install using requirements.txt---
+# --- Automatically install using requirements.txt ---
 pip install -r requirements.txt
 ```
 
 OR
 
 ```bash
-# ---Manually install---
+# --- Manually install ---
 pip install pyfiglet pytest
 ```
 
