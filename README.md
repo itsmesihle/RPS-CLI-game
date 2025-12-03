@@ -79,9 +79,6 @@ After the set number of rounds, a final scoreboard summary is displayed. After w
 - **pyfiglet** → ASCII‑art title screen
 - **pytest** → unit-testing
 
-Manual install with:
-`bash\pip install pyfiglet pytest`
-
 ---
 
 ## 🏗 **Project Structure**
@@ -143,15 +140,16 @@ cd path/to/your/project
 
 2. Install or update Python (Windows):
 
-   ---Install Python (≥3.8)---
-
 ```bash
+#---Install Python (≥3.8)---
 winget install Python.Python.3
 ```
 
-    ---Upgrade Python (≥3.8)---
+OR
 
 ```bash
+#---Upgrade Python (≥3.8)---
+
 winget upgrade Python.Python.3
 ```
 
