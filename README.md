@@ -1,5 +1,9 @@
 # Rock Paper Scissors Game
 
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
+
 A clean, modular, and fully logged Rock–Paper–Scissors game written in **Python**, featuring:
 
 - User vs Computer CLI gameplay
@@ -8,7 +12,7 @@ A clean, modular, and fully logged Rock–Paper–Scissors game written in **Pyt
 - Terminal ASCII-art welcome screen
 - Input validation & robust structure
 
-This project demonstrates beginner–intermediate Python fundamentals and is suitable for CS50P learners or anyone practicing Python structure and file handling -> THIS NEEDS TO BE WORKED ON ASAP!!
+This project demonstrates solid beginner-to-intermediate Python skills, including modular design, input validation, file handling, and automated testing with pytest.
 
 ---
 
@@ -121,8 +125,14 @@ Stores:
 
 ### **`test_project.py`**
 
-- uses Pytest to test the working order of the functions project.py by importing its modules
-- _add more descriptive_
+This file contains the automated test suite for the project, written using pytest.
+It validates:
+
+- Winner logic
+- Draw conditions
+- Losing conditions
+
+Additional tests can be added for CSV logging and input validation.
 
 ### **`README.md`**
 
@@ -187,9 +197,11 @@ This RPS game is still being worked on, constantly being updated
 ### 📝 **Future Improvements**
 
 - Add difficulty modes
+- Add a graphical UI (Tkinter or web-based)
 - Add analytics dashboard from CSV
 - Add persistent user profiles
-- Refactor code and replace ASCII-art with animation
+- Replace ASCII-art with animated output
+- Refactor logic for greater testability
 
 ---
 
@@ -200,22 +212,22 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 Please ensure your updates include:
 
 - Clear descriptions
-
 - Clean code formatting
-
 - Explanatory comments when needed
+- Please ensure your code passes all existing tests using pytest
 
 ---
 
 ## 🐛 **Issues**
 
-If you encounter bugs, crashes, or unexpected behavior, feel free to open an Issue on the repository. Please include:
+If you encounter bugs, crashes, or unexpected behavior, feel free to open an Issue on the repository.
 
-Steps to reproduce
+Please include:
 
-Expected vs actual behavior
-
-Screenshots or logs (if applicable)
+- Steps to reproduce
+- Expected vs actual behavior
+- Screenshots or logs (if applicable)
+- Python version
 
 ---
 
@@ -227,4 +239,5 @@ This project is licensed under the MIT License - you are free to use, modify, an
 
 ## 🙌 **Credits**
 
-Created by **Sihle - @itsmesihle**, showcasing skills learnt through the Harvard University's CS50P course in a structured, logged, and playful Python application.
+Created by **Sihle - @itsmesihle**
+This project showcases concepts learned in Harvard’s CS50P course through a structured, logged, and test-driven Python application.
