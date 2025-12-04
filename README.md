@@ -18,13 +18,9 @@ This project demonstrates solid beginner-to-intermediate Python skills, includin
 
 ## 📌 **Project Description**
 
-This is a console-based Rock–Paper–Scissors game where the welcomes the user with ASCII-art:
+This is a console-based Rock–Paper–Scissors game where the welcomes the user with ASCII-art. The user is then prompted to select the number of rounds they would like to play:
 
-- _insert example_
-
-The user is then prompted to select the number of rounds they would like to play:
-
-- _insert example_
+![An image of ASCII-art when starting the game](<./images/Screenshot%20(782).png>)
 
 At this point the user is asked to select either rock, paper or scissors:
 
