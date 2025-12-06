@@ -199,6 +199,8 @@ This RPS game is still being worked on, constantly being updated
 
 ### **Future Improvements**
 
+- Add timeout function similar to setTimeout() in JS, that automatically quits if user is inactive
+- ASCII-art disappears after 5 seconds on the terminal (the system in the background clears the screen after x seconds)
 - Add difficulty modes
 - Add a graphical UI (Tkinter or web-based)
 - Add analytics dashboard from CSV
