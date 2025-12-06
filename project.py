@@ -13,7 +13,7 @@ def main():
 
     # welcome procedure
     print_welcome_message()
-    total_rounds = get_valid_number_of_rounds("How many games would you like to play? ")
+    total_rounds = get_valid_number_of_rounds("How many games would you like to play? ") # this message should not disappear when show_ascii() works properly
 
     # declare variables
     user_score = 0
