@@ -5,6 +5,7 @@ import csv
 import random
 import os
 from datetime import datetime
+from threading import Timer
 
 def main():
     # initiliaze csv
@@ -72,11 +73,18 @@ def initialize_csv():
             writer.writerow(["timestamp", "user_choice", "computer_choice", "winner"])
 
 def print_welcome_message():
+    show_ascii()
+    
+def clear_screen():
+    os.system("cls" if os.name == "nt" else "clear")
+
+def show_ascii():
     f = Figlet(font='xsansb')
     print("\nLet's play\n")
     print(f.renderText('Rock. Paper. Scissors.'))
     print("Rock beats Scissors, Scissors beat Paper, and Paper beats Rock.\n")
     print("Press 'q' at ANY TIME to quit the game\n")
+    Timer(5.0, clear_screen).start()
 
 def get_valid_number_of_rounds(prompt):
     # gets valid int to determine how many rounds will be played
