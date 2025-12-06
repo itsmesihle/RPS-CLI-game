@@ -34,6 +34,10 @@ def main():
         # get computer choice
         computer_choice = get_computer_choice()
 
+        #change user and computer choices into words for output purposes
+        user_word = choice_to_word(user_choice)
+        computer_word = choice_to_word(computer_choice)
+
         # determine winner
         winner = determine_winner(user_choice, computer_choice)
 
@@ -43,15 +47,15 @@ def main():
         # tally score
         if winner == "draw":
             # increment both scores
-            print(f"You and the computer both picked {user_choice}. Its a draw! play again. ")
+            print(f"You and the computer both picked {user_word}. Its a draw! play again. ")
             continue
 
         elif winner == "user":
-            print("You won this round!")
+            print(f"You chose {user_word} and the computer chose {computer_word}. You win this round!")
             user_score += 1
 
         elif winner == "computer":
-            print("Computer won this round!")
+            print(f"You chose {user_word} and the computer chose {computer_word}.Computer won this round!")
             computer_score += 1
 
         rounds_played += 1
@@ -112,6 +116,9 @@ def get_user_choice():
 
 def get_computer_choice():
     return random.choice(["r", "p", "s"])
+
+def choice_to_word(r):
+    return {"r": "rock", "p": "paper", "s": "scissors"}.get(r, "?")
 
 def determine_winner(user, computer):
     if user == computer:
