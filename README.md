@@ -70,24 +70,24 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ### **Python Fundamentals**
 
-🧩 Functions & modular code
-🌀 Loops & conditionals
-⚠️ Error handling
-🔍 Input validation
+- Functions & modular code 🧩
+- Loops & conditionals 🌀
+- Error handling ⚠️
+- Input validation 🔍
 
 ### **Intermediate Concepts**
 
-📂 File handling (CSV reading/writing)
-🕒 Logging timestamp data
-🧩 Using 3rd‑party modules
-🧱 Clean code structuring
-🔧 Separation of concerns in functions
+- File handling (CSV reading/writing) 📂
+- Logging timestamp data 🕒
+- Using 3rd‑party modules 🧩
+- Clean code structuring 🧱
+- Separation of concerns in functions 🔧
 
 ### **Soft Skills Demonstrated**
 
-📝 Code Documentation
-👓 Code readability & maintainability
-🛡️ Defensive programming
+- Code Documentation 📝
+- Code readability & maintainability 👓
+- Defensive programming 🛡️
 
 ---
 
