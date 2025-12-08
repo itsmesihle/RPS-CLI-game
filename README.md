@@ -1,6 +1,7 @@
 # Rock Paper Scissors Game
 
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![Course](https://img.shields.io/badge/Harvard-CS50P-red)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
 
