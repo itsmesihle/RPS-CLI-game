@@ -66,25 +66,24 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ### **Python Fundamentals**
 
-- 🧩 Functions & modular code
-- 🌀 Loops & conditionals
-- ⚠️ Error handling
-- 🔍 Input validation
-- 📁 File operations
+🧩 Functions & modular code
+🌀 Loops & conditionals
+⚠️ Error handling
+🔍 Input validation
 
 ### **Intermediate Concepts**
 
-- 📂 File handling (CSV reading/writing)
-- 🕒 Logging timestamp data
-- 🧩 Using 3rd‑party modules
-- 🧱 Clean code structuring
-- 🔧 Separation of concerns in functions
+📂 File handling (CSV reading/writing)
+🕒 Logging timestamp data
+🧩 Using 3rd‑party modules
+🧱 Clean code structuring
+🔧 Separation of concerns in functions
 
 ### **Soft Skills Demonstrated**
 
-- 📝 Code Documentation
-- 👓 Code readability & maintainability
-- 🛡️ Defensive programming
+📝 Code Documentation
+👓 Code readability & maintainability
+🛡️ Defensive programming
 
 ---
 
@@ -156,7 +155,7 @@ Additional tests can be added for CSV logging and input validation.
 
 ### **`README.md`**
 
-- Contains documentation of the project.
+Contains documentation of the project.
 
 ---
 
@@ -268,4 +267,3 @@ This project is licensed under the MIT License - you are free to use, modify, an
 Created by **Sihle Ndlovu - @itsmesihle**
 
 This project showcases concepts learned in Harvard’s CS50P course through a structured, logged, and test-driven Python application.
-![Course](https://img.shields.io/badge/Harvard-CS50P-red)
