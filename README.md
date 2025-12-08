@@ -4,6 +4,9 @@
 ![Course](https://img.shields.io/badge/Harvard-CS50P-red)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
+![Repo Size](https://img.shields.io/github/repo-size/itsmesihle/RPS-Game)
+![Last Commit](https://img.shields.io/github/last-commit/itsmesihle/RPS-Game)
+![Issues](https://img.shields.io/github/issues/itsmesihle/RPS-Game)
 
 A clean, modular, and fully logged Rock–Paper–Scissors game written in **Python**, featuring:
 
@@ -220,14 +223,20 @@ This RPS game is still being worked on, constantly being updated
 
 ### **Future Improvements**
 
-- Add timeout function similar to setTimeout() in JS, that automatically quits if user is inactive
-- ASCII-art disappears after 5 seconds on the terminal (the system in the background clears the screen after x seconds)
-- Add difficulty modes
-- Add a graphical UI (Tkinter or web-based)
-- Add analytics dashboard from CSV
-- Add persistent user profiles
-- Replace ASCII-art with animated output
-- Refactor logic for greater testability
+⏳ Gameplay Improvements
+
+- Away From Keyboard timeout function
+- Auto-hide ASCII-art
+
+🎮 Feature Additions
+
+- Difficulty modes
+- GUI version
+
+📊 Data & Analytics
+
+- CSV dashboard
+- Persistent user profiles
 
 ---
 
