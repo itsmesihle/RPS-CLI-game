@@ -296,7 +296,6 @@ I welcome connection requests from recruiters and fellow developers to discuss:
 
 ### **Let's Connect!**
 
-- ![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?logo=linkedin&logoColor=white)
-  [LinkedIn](https://www.linkedin.com/feed/)
-- [Email](mailto:msihlesndlovu97@gmail.com?subject=Let's%20Connect%20-%20RPS%20-%20Game)
-- [Portfolio](https://github.com/itsmesihle)
+- 🔗 [LinkedIn](https://www.linkedin.com/feed/)
+- 📧 [Email](mailto:msihlesndlovu97@gmail.com?subject=Let's%20Connect%20-%20RPS%20-%20Game)
+- 💻 [Portfolio](https://github.com/itsmesihle)
