@@ -32,7 +32,7 @@ This project demonstrates solid beginner-to-intermediate Python skills, includin
 - [Contributing](#-contributing)
 - [Issues](#-issues)
 - [License](#-license)
-- [Credits](#-credits)
+- [Author & Attribution](#-author--attribution)
 
 ---
 
@@ -272,7 +272,7 @@ This project is licensed under the MIT License - you are free to use, modify, an
 
 ---
 
-## 🙌 **Credits**
+## 🙌 **Author & Attribution**
 
 Created by **Sihle Ndlovu - @itsmesihle**
 
