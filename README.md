@@ -33,6 +33,7 @@ This project demonstrates solid beginner-to-intermediate Python skills, includin
 - [Issues](#-issues)
 - [License](#-license)
 - [Author & Attribution](#-author--attribution)
+- [Connect with Me](#-connect-with-me)
 
 ---
 
@@ -282,7 +283,7 @@ This project showcases concepts learned in Harvard’s CS50P course through a st
 
 ---
 
-## 👋 **Connect with Me (Actively Seeking Roles!)**
+## 👋 **Connect with Me**
 
 I am a job seeker actively looking for **Software Developer** or **Backend Python** opportunities.
 
@@ -295,6 +296,7 @@ I welcome connection requests from recruiters and fellow developers to discuss:
 
 ### **Let's Connect!**
 
-- [LinkedIn](https://www.linkedin.com/feed/)
+- ![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?logo=linkedin&logoColor=white)
+  [LinkedIn](https://www.linkedin.com/feed/)
 - [Email](mailto:msihlesndlovu97@gmail.com?subject=Let's%20Connect%20-%20RPS%20-%20Game)
 - [Portfolio](https://github.com/itsmesihle)
