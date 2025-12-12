@@ -238,8 +238,13 @@ This RPS game is still being worked on, constantly being updated
 
 📊 Data & Analytics
 
-- CSV dashboard
+- CSV dashboard report
 - Persistent user profiles
+
+Testing
+
+- Implement coverage.py and ensure coverage of < 90%
+- use of classes and properties
 
 ---
 
@@ -296,6 +301,6 @@ I welcome connection requests from recruiters and fellow developers to discuss:
 
 ### **Let's Connect!**
 
-- 🔗 [LinkedIn](https://www.linkedin.com/feed/)
+- 🔗 [LinkedIn](https://www.linkedin.com/in/itsmesihle/)
 - 📧 [Email](mailto:msihlesndlovu97@gmail.com?subject=Let's%20Connect%20-%20RPS%20-%20Game)
 - 💻 [Portfolio](https://github.com/itsmesihle)
