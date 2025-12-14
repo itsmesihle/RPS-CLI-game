@@ -24,6 +24,8 @@ def main():
     while rounds_played < total_rounds:
         print(f"\nRound {rounds_played + 1} of {total_rounds}")
 
+        # maybe use classes instead of functions next time
+
         # get user choice OR abort sequence
         user_choice = get_user_choice()
 
@@ -73,7 +75,7 @@ def initialize_csv():
             writer.writerow(["timestamp", "user_choice", "computer_choice", "winner"])
 
 def print_welcome_message():
-    show_ascii()
+    show_ascii() 
     
 def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
