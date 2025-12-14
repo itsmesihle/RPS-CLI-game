@@ -246,6 +246,10 @@ Testing
 - Implement coverage.py and ensure coverage of < 90%
 - use of classes and properties
 
+Code
+
+- use classes instead of functions (OOP instead of procedural)
+
 ---
 
 ## 🤝 **Contributing**
