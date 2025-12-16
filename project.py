@@ -58,7 +58,7 @@ def main():
             user_score += 1
 
         elif winner == "computer":
-            print(f"You chose {user_word} and the computer chose {computer_word}.Computer won this round!")
+            print(f"You chose {user_word} and the computer chose {computer_word}. Computer won this round!")
             computer_score += 1
 
         rounds_played += 1
@@ -136,7 +136,7 @@ def determine_winner(user, computer):
 
     elif (
         (user == "r" and computer == "s") or
-        (user == "s" and computer == "r") or
+        (user == "s" and computer == "p") or
         (user == "p" and computer == "r")):
         return "user"
 
