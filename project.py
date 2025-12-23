@@ -102,7 +102,7 @@ def get_valid_number_of_rounds(prompt):
     while True:
         user = input(prompt).lower().strip()
         if user == "q":
-            print("\n⚠️ Game aborted before starting.")
+            print("\nGame aborted before starting.")
             log_to_csv("quit", "-", "aborted")
             exit()
 
