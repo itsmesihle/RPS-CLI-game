@@ -1,7 +1,7 @@
 from pyfiglet import Figlet
 import pyfiglet
 import json
-import csv
+import sqlite3
 import random
 import os
 from datetime import datetime
@@ -171,18 +171,3 @@ def get_score(computer_score, user_score):
 if __name__ == "__main__":
     main()
 
-
-""" # sorted fonts
-font_list = pyfiglet.FigletFont.getFonts()
-sorted_fonts = sorted(font_list)
-readable_response = json.dumps(sorted_fonts, indent=4)
-
-# print font and font example
-example_text = 'Rock. Paper. Scissors. 123'
-
-for font_name in sorted_fonts:
-    f = Figlet(font=font_name)
-    rendered_text = f.renderText(example_text)
-    print(f"font name - {font_name}\n {rendered_text}")
-#print(readable_response)
- """
