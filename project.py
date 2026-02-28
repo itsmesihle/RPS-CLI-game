@@ -1,6 +1,6 @@
-from pyfiglet import Figlet
-import pyfiglet
-import json
+ pyfiglet
+import from pyfiglet import Figlet
+importjson
 import csv
 import random
 import os
@@ -35,7 +35,7 @@ def main():
         # INVALID CHOICE handling
         valid_options = ["r", "p", "s"]
         if user_choice not in valid_options:
-            print("\n Invalid choice. Please type 'r', 'p' or 's'. \n")
+            print("\nInvalid choice. Please type 'r', 'p' or 's'. \n")
             log_to_csv(user_choice, "-", "invalid")
             continue
 
