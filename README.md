@@ -1,4 +1,4 @@
-# Rock Paper Scissors Game
+# Rock Paper Scissors Game (v2.0 - SQLite3 Edition)
 
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![Course](https://img.shields.io/badge/Harvard-CS50P-red)
@@ -98,10 +98,10 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ### **Standard Library**
 
+- `sqlite3` - relational database management
 - `random` – computer choice
-- `csv` – game data logging
 - `datetime` – timestamp generation
-- `os` – file checking
+- `os` – environment and file checking
 - `json` – used in development/testing
 
 ### **Third-Party Libraries**
@@ -115,9 +115,10 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ```
 .
+├── .gitignore
+├── database.py
 ├── project.py
 ├── requirements.txt
-├── RPS_game_data.csv
 ├── test_project.py
 └── README.md
 ```
