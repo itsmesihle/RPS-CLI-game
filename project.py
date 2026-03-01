@@ -1,11 +1,13 @@
- pyfiglet
-import from pyfiglet import Figlet
-importjson
 import csv
 import random
 import os
 from datetime import datetime
-from threading import Timer
+from pyfiglet import Figlet
+# from threading import Timer
+
+# I am thinking that this code needs 2 main classes
+# 1. playing the actual game
+# 2. logging the results to csv
 
 def main():
     # initiliaze csv
