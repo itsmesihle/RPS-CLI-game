@@ -1,14 +1,12 @@
- pyfiglet
-import from pyfiglet import Figlet
-importjson
 import csv
 import random
 import os
 from datetime import datetime
-from threading import Timer
+from pyfiglet import Figlet
+# from threading import Timer
 
 def main():
-    # initiliaze csv
+    # initilize csv
     initialize_csv()
 
     # welcome procedure
