@@ -9,7 +9,7 @@ from pyfiglet import Figlet
 # 1. playing the actual game
 # 2. logging the results to csv
 
-class GameManager: # manages the csv file and management of it
+class GameDataManager: # manages the csv file and management of it
 
     def __init__(self, filename="RPS_game_data.csv"):
         self.filename = filename
@@ -27,6 +27,31 @@ class GameManager: # manages the csv file and management of it
             writer = csv.writer(csvfile)
             writer.writerow([timestamp, user_choice, computer_choice, winner])
 
+# User Interface layer
+class WelcomeMessage:
+    """Handles visual presentation and ASCII art."""
+    def __init__(self, font='xsansb'):
+        self.figlet = Figlet(font=font)
+
+    def displayASCII(self):
+        print(self.figlet.renderText('Rock. Paper. Scissors.'))
+        print("Press 'q' at ANY TIME to quit.\n")
+
+""" 
+--- refactored welcome message
+--- need to figure out how to automatically slear the message
+
+def clear_screen():
+    os.system("cls" if os.name == "nt" else "clear")
+
+def show_ascii():
+    f = Figlet(font='xsansb')
+    print("\nLet's play\n")
+    print(f.renderText('Rock. Paper. Scissors.'))
+    print("Rock beats Scissors, Scissors beat Paper, and Paper beats Rock.\n")
+    print("Press 'q' at ANY TIME to quit the game\n")
+    Timer(5.0, clear_screen).start()
+ """
 def main():
 
     # welcome procedure
@@ -93,19 +118,7 @@ def main():
     # display final score...close
     get_score(computer_score, user_score)
 
-def print_welcome_message():
-    show_ascii()
 
-def clear_screen():
-    os.system("cls" if os.name == "nt" else "clear")
-
-def show_ascii():
-    f = Figlet(font='xsansb')
-    print("\nLet's play\n")
-    print(f.renderText('Rock. Paper. Scissors.'))
-    print("Rock beats Scissors, Scissors beat Paper, and Paper beats Rock.\n")
-    print("Press 'q' at ANY TIME to quit the game\n")
-    Timer(5.0, clear_screen).start()
 
 def get_valid_number_of_rounds(prompt):
     # gets valid int to determine how many rounds will be played
