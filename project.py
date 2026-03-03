@@ -9,6 +9,14 @@ from pyfiglet import Figlet
 # 1. playing the actual game
 # 2. logging the results to csv
 
+class GameManager: # manages the csv file and management of it
+
+    def __init__(self, filename="RPS_game_data.csv"):
+        self.filename = filename
+        self._initialize_csv()
+
+    
+
 def main():
     # initiliaze csv
     initialize_csv()
