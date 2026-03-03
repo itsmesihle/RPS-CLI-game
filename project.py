@@ -15,11 +15,19 @@ class GameManager: # manages the csv file and management of it
         self.filename = filename
         self._initialize_csv()
 
-    
+    def _initialize_csv(self):
+        if not os.path.exists(self.filename) or os.path.getsize(self.filename) == 0:
+            with open(self.filename, "w", newline="") as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow(["timestamp", "user_choice", "computer_choice", "winner"])
+
+    def log_result_to_csv(self, user_choice, computer_choice, winner):
+        timestamp = datetime.now().isoformat(timespec="seconds")
+        with open(self.filename, "a", newline="") as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow([timestamp, user_choice, computer_choice, winner])
 
 def main():
-    # initiliaze csv
-    initialize_csv()
 
     # welcome procedure
     print_welcome_message()
@@ -84,14 +92,6 @@ def main():
 
     # display final score...close
     get_score(computer_score, user_score)
-
-def initialize_csv():
-    file_name = "RPS_game_data.csv"
-    # Check path if file exists or empty, if not then create it
-    if not os.path.exists(file_name) or os.path.getsize(file_name) == 0:
-        with open(file_name, "w", newline="") as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(["timestamp", "user_choice", "computer_choice", "winner"])
 
 def print_welcome_message():
     show_ascii()
@@ -163,12 +163,6 @@ def determine_winner(user, computer):
     else:
         return "invalid"
 
-def log_to_csv(user_choice, computer_choice, winner):
-    timestamp = datetime.now().isoformat(timespec="seconds")
-    with open("RPS_game_data.csv", "a", newline="") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow([timestamp, user_choice, computer_choice, winner])
-
 def get_score(computer_score, user_score):
         print(f"\n--- Final Scores --- \n--- Computer Score: {computer_score}\n--- Your Score: {user_score}\n")
         if computer_score > user_score:
@@ -181,18 +175,3 @@ def get_score(computer_score, user_score):
 if __name__ == "__main__":
     main()
 
-
-""" # sorted fonts
-font_list = pyfiglet.FigletFont.getFonts()
-sorted_fonts = sorted(font_list)
-readable_response = json.dumps(sorted_fonts, indent=4)
-
-# print font and font example
-example_text = 'Rock. Paper. Scissors. 123'
-
-for font_name in sorted_fonts:
-    f = Figlet(font=font_name)
-    rendered_text = f.renderText(example_text)
-    print(f"font name - {font_name}\n {rendered_text}")
-#print(readable_response)
- """
