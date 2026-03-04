@@ -5,12 +5,14 @@ from datetime import datetime
 from pyfiglet import Figlet
 # from threading import Timer
 
-# I am thinking that this code needs 2 main classes
-# 1. playing the actual game
-# 2. logging the results to csv
+# I am thinking that this code needs 4 main classes
+# 1. data layer (csv)
+# 2. ui layer (welcome message)
+# 3. game logic
+# 4. orchestrator class = engine of the game
 
+# 1. DATA HANDLING LAYER
 class GameDataManager: # manages the csv file and management of it
-
     def __init__(self, filename="RPS_game_data.csv"):
         self.filename = filename
         self._initialize_csv()
@@ -27,7 +29,7 @@ class GameDataManager: # manages the csv file and management of it
             writer = csv.writer(csvfile)
             writer.writerow([timestamp, user_choice, computer_choice, winner])
 
-# User Interface layer
+# 2. USER INTERFACE LAYER
 class WelcomeMessage:
     """Handles visual presentation and ASCII art."""
     def __init__(self, font='xsansb'):
@@ -37,21 +39,33 @@ class WelcomeMessage:
         print(self.figlet.renderText('Rock. Paper. Scissors.'))
         print("Press 'q' at ANY TIME to quit.\n")
 
-""" 
---- refactored welcome message
---- need to figure out how to automatically slear the message
+# 3. LOGIC LAYER
+# pure logic of game lives here
 
-def clear_screen():
-    os.system("cls" if os.name == "nt" else "clear")
+class RPSGame:
+    CHOICES = {"r": "rock", "p": "paper", "s": "scissors"}
 
-def show_ascii():
-    f = Figlet(font='xsansb')
-    print("\nLet's play\n")
-    print(f.renderText('Rock. Paper. Scissors.'))
-    print("Rock beats Scissors, Scissors beat Paper, and Paper beats Rock.\n")
-    print("Press 'q' at ANY TIME to quit the game\n")
-    Timer(5.0, clear_screen).start()
- """
+    def get_computer_choice(self):
+        return random.choice(list(self.CHOICES.keys()))
+    
+    @staticmethod # like a calculator, doesnt care whats inside the 
+    def determine_winner(user, computer):
+        if user == computer:
+            return "draw"
+        win_conditions = [('r', 's'), ('s', 'p'), ('p', 'r')]
+        if (user, computer) in win_conditions:
+            return "user"
+        return "computer"
+    
+# 4. ORCHESTRATION LAYER or THE ENGINE (where everything works together)
+class GameEngine:
+    def __init__(self):
+        self.data = GameDataManager()
+        self.ui = WelcomeMessage()
+        self.engine = RPSGame()
+        self.user_score = 0
+        self.computer_score = 0
+
 def main():
 
     # welcome procedure
@@ -118,8 +132,6 @@ def main():
     # display final score...close
     get_score(computer_score, user_score)
 
-
-
 def get_valid_number_of_rounds(prompt):
     # gets valid int to determine how many rounds will be played
     while True:
@@ -144,37 +156,6 @@ def safe_input(prompt=""):
         print("\nGame aborted by user.")
         return "QUIT_GAME"
     return user
-
-def get_user_choice():
-    choice = input("Choose between (r)ock, (p)aper or (s)cissors or 'q' to quit: ").lower().strip()
-    if choice == "q":
-        return "QUIT_GAME"
-    return choice
-
-def get_computer_choice():
-    return random.choice(["r", "p", "s"])
-
-def choice_to_word(r):
-    return {"r": "rock", "p": "paper", "s": "scissors"}.get(r, "?")
-
-def determine_winner(user, computer):
-    if user == computer:
-        return "draw"
-
-    elif (
-        (user == "r" and computer == "s") or
-        (user == "s" and computer == "p") or
-        (user == "p" and computer == "r")):
-        return "user"
-
-    elif (
-        (user == "r" and computer == "p") or
-        (user == "s" and computer == "r") or
-        (user == "p" and computer == "s")):
-        return "computer"
-
-    else:
-        return "invalid"
 
 def get_score(computer_score, user_score):
         print(f"\n--- Final Scores --- \n--- Computer Score: {computer_score}\n--- Your Score: {user_score}\n")
