@@ -12,7 +12,7 @@ from pyfiglet import Figlet
 # 4. orchestrator class = engine of the game
 
 # 1. DATA HANDLING LAYER
-class GameDataManager: # manages the csv file and management of it
+class GameDataManager: # manages the csv file
     def __init__(self, filename="RPS_game_data.csv"):
         self.filename = filename
         self._initialize_csv()
@@ -65,6 +65,19 @@ class GameEngine:
         self.engine = RPSGame()
         self.user_score = 0
         self.computer_score = 0
+
+    def get_valid_rounds(self):
+        while True:
+            rounds = input("How many games would you like to play? ").lower().strip()
+            if rounds == 'q': 
+                return "QUIT_GAME"
+            try:
+                n = int(rounds)
+                if n > 0: 
+                    return n
+                print("Enter a number > 0.")
+            except ValueError:
+                print("Invalid input. Enter a number")
 
 def main():
 
@@ -167,5 +180,5 @@ def get_score(computer_score, user_score):
             print("Congrats you WON!!!\n")
 
 if __name__ == "__main__":
-    main()
+    main = GameEngine()
 
