@@ -96,7 +96,7 @@ class GameEngine:
         self.user_score = 0
         self.computer_score = 0
 
-    def start_game(self):
+    def start(self):
         #display message
         self.ui.displayASCII()
 
@@ -216,6 +216,5 @@ def get_score(computer_score, user_score):
             print("Congrats you WON!!!\n")
 
 if __name__ == "__main__":
-    manager = GameEngine()
-    manager.start_game()
-
+    game = GameEngine()
+    game.start()
