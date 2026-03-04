@@ -11,6 +11,12 @@ from pyfiglet import Figlet
 # 3. game logic
 # 4. orchestrator class = engine of the game
 
+class GameRound:
+    def __init__(self, user, computer, winner):
+        self.user = user
+        self.computer = computer
+        self.winner = winner
+
 # 1. DATA HANDLING LAYER
 class GameDataManager: # manages the csv file
     def __init__(self, filename="RPS_game_data.csv"):
@@ -23,11 +29,16 @@ class GameDataManager: # manages the csv file
                 writer = csv.writer(csvfile)
                 writer.writerow(["timestamp", "user_choice", "computer_choice", "winner"])
 
-    def log_result_to_csv(self, user_choice, computer_choice, winner):
+    def log_result_to_csv(self, round_data):
         timestamp = datetime.now().isoformat(timespec="seconds")
         with open(self.filename, "a", newline="") as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow([timestamp, user_choice, computer_choice, winner])
+            writer.writerow([
+                timestamp, 
+                round_data.user, 
+                round_data.computer, 
+                round_data.winner
+                ])
 
 # 2. USER INTERFACE LAYER
 class WelcomeMessage:
@@ -48,7 +59,15 @@ class RPSGame:
     def get_computer_choice(self):
         return random.choice(list(self.CHOICES.keys()))
     
-    @staticmethod # like a calculator, doesnt care whats inside the 
+    def get_user_choice(self):
+        """Gets user input and validates it"""
+        while True:
+            move = input("Choose between (r/p/s) or q to quit game: ").lower().strip()
+            if move == 'q' or move in self.CHOICES:
+                return move
+            print("Invalid input! please try again")
+    
+    @staticmethod # like a calculator, doesn't care whats inside the 
     def determine_winner(user, computer):
         if user == computer:
             return "draw"
@@ -56,6 +75,18 @@ class RPSGame:
         if (user, computer) in win_conditions:
             return "user"
         return "computer"
+    
+    def play_single_round(self):
+        user_choice = self.get_user_choice()
+        comp_choice = self.get_computer_choice()
+        winner = self.determine_winner(user_choice, comp_choice)
+
+        # handle 'q' scenario...quit immediately and log result to csv
+        if user_choice == 'q':
+            return GameRound(user='q', computer=None, winner='aborted')
+        
+        return GameRound(user_choice, comp_choice, winner)
+
     
 # 4. ORCHESTRATION LAYER or THE ENGINE (where everything works together)
 class GameEngine:
