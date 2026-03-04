@@ -216,5 +216,6 @@ def get_score(computer_score, user_score):
             print("Congrats you WON!!!\n")
 
 if __name__ == "__main__":
-    main = GameEngine()
+    manager = GameEngine()
+    manager.start_game()
 
