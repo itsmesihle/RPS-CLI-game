@@ -81,13 +81,12 @@ class RPSGame:
         comp_choice = self.get_computer_choice()
         winner = self.determine_winner(user_choice, comp_choice)
 
-        # handle 'q' scenario...quit immediately and log result to csv
+        # handle 'q' scenario...quit immediately
         if user_choice == 'q':
             return GameRound(user='q', computer=None, winner='aborted')
         
         return GameRound(user_choice, comp_choice, winner)
 
-    
 # 4. ORCHESTRATION LAYER or THE ENGINE (where everything works together)
 class GameEngine:
     def __init__(self):
@@ -97,18 +96,24 @@ class GameEngine:
         self.user_score = 0
         self.computer_score = 0
 
-    def get_valid_rounds(self):
-        while True:
-            rounds = input("How many games would you like to play? ").lower().strip()
-            if rounds == 'q': 
-                return "QUIT_GAME"
-            try:
-                n = int(rounds)
-                if n > 0: 
-                    return n
-                print("Enter a number > 0.")
-            except ValueError:
-                print("Invalid input. Enter a number")
+    def start_game(self):
+        #display message
+        self.ui.displayASCII()
+
+        # int input validation
+        n = input("How many games would you like to play? ").lower().strip()
+        if n == 'q': 
+            return GameRound(user='q', computer=None, winner='aborted')
+        try:
+            rounds = int(n)
+            if rounds > 0: 
+                return rounds
+            print("Enter a positive number. ")
+        except ValueError:
+            print("Invalid input. Enter a number")
+
+        for i in range(rounds):
+            print(f"\nRound {i + 1} of {rounds}")
 
 def main():
 
