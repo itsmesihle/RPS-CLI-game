@@ -107,7 +107,7 @@ class GameEngine:
         while True:
             n = input("How many games would you like to play? ").lower().strip()
             if n == 'q': 
-                print("Thanks for playing")
+                print("Thanks for playing.")
                 return 
             try:
                 rounds = int(n)
