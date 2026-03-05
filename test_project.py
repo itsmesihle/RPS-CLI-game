@@ -1,6 +1,8 @@
 import pytest
 from main import determine_winner
 
+# looks like a lot of these tests no longer work
+
 def test_determine_winner():
     assert determine_winner("r", "r") == "draw"
     assert determine_winner("p", "p") == "draw"
