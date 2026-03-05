@@ -47,6 +47,7 @@ class WelcomeMessage:
         self.figlet = Figlet(font=font)
 
     def displayASCII(self):
+        os.system("cls" if os.name == "nt" else "clear")
         print(self.figlet.renderText('Rock. Paper. Scissors.'))
         print("Press 'q' at ANY TIME to quit.\n")
 
@@ -107,113 +108,45 @@ class GameEngine:
         try:
             rounds = int(n)
             if rounds > 0: 
-                return rounds
+                return
             print("Enter a positive number. ")
         except ValueError:
             print("Invalid input. Enter a number")
 
         for i in range(rounds):
             print(f"\nRound {i + 1} of {rounds}")
+            # round is played and repeated inside loop
+            current_round = self.engine.play_single_round()
+            # LOG THE RESULT
+            self.data.log_result_to_csv(current_round)
 
-def main():
+            # check if we need to break loop
+            if current_round.winner == 'aborted':
+                print("Game aborted by user")
+                break
 
-    # welcome procedure
-    print_welcome_message()
-    total_rounds = get_valid_number_of_rounds("How many games would you like to play? ")
+            # process visual feedback and score
+            self._process_round_result(current_round)
+        self._display_final_score()
 
-    # declare variables
-    user_score = 0
-    computer_score = 0
-    rounds_played = 0
+    def _process_round_result(self, round_data):
+        # updates scores and prints the outcome of a completed round
+        u_name = self.engine.CHOICES[round_data.user]
+        c_name = self.engine.CHOICES[round_data.computer]
 
-    # actual game plays
-    while rounds_played < total_rounds:
-        print(f"\nRound {rounds_played + 1} of {total_rounds}")
-
-        # get user choice OR abort sequence
-        user_choice = get_user_choice()
-
-        if user_choice == "QUIT_GAME":
-            print("\n Game is aborted early.")
-            log_to_csv("quit", "-", "aborted")
-            break
-
-        # INVALID CHOICE handling
-        valid_options = ["r", "p", "s"]
-        if user_choice not in valid_options:
-            print("\nInvalid choice. Please type 'r', 'p' or 's'. \n")
-            log_to_csv(user_choice, "-", "invalid")
-            continue
-
-        # get computer choice
-        computer_choice = get_computer_choice()
-
-        #change user and computer choices into words for output purposes
-        user_word = choice_to_word(user_choice)
-        computer_word = choice_to_word(computer_choice)
-
-        # determine winner
-        winner = determine_winner(user_choice, computer_choice)
-
-        # logs to csv
-        log_to_csv(user_choice, computer_choice, winner)
-
-        # tally score
-        if winner == "draw":
-            # increment both scores
-            print(f"You and the computer both picked {user_word}. Its a draw! play again. ")
-            continue
-
-        elif winner == "invalid":
-            print(f"That was an invalid choice. ")
-            continue
-
-        elif winner == "user":
-            print(f"You chose {user_word} and the computer chose {computer_word}. You win this round!")
-            user_score += 1
-
-        elif winner == "computer":
-            print(f"You chose {user_word} and the computer chose {computer_word}. Computer won this round!")
-            computer_score += 1
-
-        rounds_played += 1
-
-    # display final score...close
-    get_score(computer_score, user_score)
-
-def get_valid_number_of_rounds(prompt):
-    # gets valid int to determine how many rounds will be played
-    while True:
-        user = input(prompt).lower().strip()
-        if user == "q":
-            print("\nGame aborted before starting.")
-            log_to_csv("quit", "-", "aborted")
-            exit()
-
-        try:
-            n = int(user)
-            if n > 0:
-                return n
-            else:
-                print("Please enter a number greater than 0.")
-        except ValueError:
-            print("Invalid input. please enter a number")
-
-def safe_input(prompt=""):
-    user = input(prompt).lower().strip()
-    if user == "q":
-        print("\nGame aborted by user.")
-        return "QUIT_GAME"
-    return user
-
-def get_score(computer_score, user_score):
-        print(f"\n--- Final Scores --- \n--- Computer Score: {computer_score}\n--- Your Score: {user_score}\n")
-        if computer_score > user_score:
-            print("The computer won...YOU SUCK!!!\n")
-        elif computer_score == user_score:
-            print("You and the computer are evenly matched. It's a DRAW!!!")
+        if round_data.winner == "draw":
+            print(f"Draw! Both chose {u_name}")
+        elif round_data.winner == "user":
+            print(f"Win! {u_name} beats {c_name}.")
+            self.user_score += 1
         else:
-            print("Congrats you WON!!!\n")
+            print(f"Loss! {c_name} beats {u_name}.")
+            self.computer_score += 1
+
+    def _display_final_score(self):
+        print("\n", "-" * 10 , " FINAL SCORE ", "-" *10)
+        print(f"\nYou: {self.user_score} || CPU: {self.computer_score}")
+        print("-" * 30)
 
 if __name__ == "__main__":
     game = GameEngine()
