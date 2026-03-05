@@ -47,7 +47,7 @@ class WelcomeMessage:
         self.figlet = Figlet(font=font)
 
     def displayASCII(self):
-        os.system("cls" if os.name == "nt" else "clear")
+        os.system("cls" if os.name == "nt" else "clear") # dont know exactly what this does
         print(self.figlet.renderText('Rock. Paper. Scissors.'))
         print("Press 'q' at ANY TIME to quit.\n")
 
@@ -63,7 +63,7 @@ class RPSGame:
     def get_user_choice(self):
         """Gets user input and validates it"""
         while True:
-            move = input("Choose between (r/p/s) or q to quit game: ").lower().strip()
+            move = input("Choose between (r/p/s): ").lower().strip()
             if move == 'q' or move in self.CHOICES:
                 return move
             print("Invalid input! please try again")
@@ -79,12 +79,13 @@ class RPSGame:
     
     def play_single_round(self):
         user_choice = self.get_user_choice()
-        comp_choice = self.get_computer_choice()
-        winner = self.determine_winner(user_choice, comp_choice)
 
-        # handle 'q' scenario...quit immediately
+        # CHECK FOR 'q' BEFORE CALCULATING WINNER
         if user_choice == 'q':
             return GameRound(user='q', computer=None, winner='aborted')
+        
+        comp_choice = self.get_computer_choice()
+        winner = self.determine_winner(user_choice, comp_choice)
         
         return GameRound(user_choice, comp_choice, winner)
 
@@ -102,16 +103,19 @@ class GameEngine:
         self.ui.displayASCII()
 
         # int input validation
-        n = input("How many games would you like to play? ").lower().strip()
-        if n == 'q': 
-            return GameRound(user='q', computer=None, winner='aborted')
-        try:
-            rounds = int(n)
-            if rounds > 0: 
-                return
-            print("Enter a positive number. ")
-        except ValueError:
-            print("Invalid input. Enter a number")
+        rounds = 0
+        while True:
+            n = input("How many games would you like to play? ").lower().strip()
+            if n == 'q': 
+                print("Thanks for playing")
+                return 
+            try:
+                rounds = int(n)
+                if rounds > 0: 
+                    break
+                print("Enter a positive number. ")
+            except ValueError:
+                print("Invalid input. Enter a number")
 
         for i in range(rounds):
             print(f"\nRound {i + 1} of {rounds}")
@@ -127,6 +131,7 @@ class GameEngine:
 
             # process visual feedback and score
             self._process_round_result(current_round)
+
         self._display_final_score()
 
     def _process_round_result(self, round_data):
@@ -137,16 +142,16 @@ class GameEngine:
         if round_data.winner == "draw":
             print(f"Draw! Both chose {u_name}")
         elif round_data.winner == "user":
-            print(f"Win! {u_name} beats {c_name}.")
+            print(f"Win! {u_name.capitalize()} beats {c_name}.")
             self.user_score += 1
         else:
-            print(f"Loss! {c_name} beats {u_name}.")
+            print(f"Loss! {c_name.capitalize()} beats {u_name}.")
             self.computer_score += 1
 
     def _display_final_score(self):
-        print("\n", "-" * 10 , " FINAL SCORE ", "-" *10)
+        print("\n" + "-" * 10 , " FINAL SCORE ", "-" *10)
         print(f"\nYou: {self.user_score} || CPU: {self.computer_score}")
-        print("-" * 30)
+        print("-" * 35)
 
 if __name__ == "__main__":
     game = GameEngine()
