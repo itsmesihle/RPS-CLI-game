@@ -1,2 +1,6 @@
 *.mp4 
 images/Opening-scene.png 
+<<<<<<< HEAD
+=======
+__pycache__/
+>>>>>>> v2-oop
