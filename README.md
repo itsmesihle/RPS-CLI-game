@@ -69,9 +69,9 @@ The project built using a **Layered Orchestration** and follows a modular design
 | Layer            | Class             | Responsibility                                               |
 | :--------------- | :---------------- | :----------------------------------------------------------- |
 | **Orchestrator** | `GameEngine`      | The "Brain" that coordinates the UI, Logic, and Data.        |
-| **Logic**        | `RPSGame`         | Handles pure game rules, win/loss math, and move validation. |
+| **Core Logic**   | `RPSGame`         | Handles pure game rules, win/loss math, and move validation. |
 | **Data**         | `GameDataManager` | Manages CSV initialization and persistent logging.           |
-| **UI/View**      | `WelcomeMessage`  | Manages ASCII art and terminal presentation.                 |
+| **UI**           | `WelcomeMessage`  | Manages ASCII art and terminal presentation.                 |
 | **Model**        | `GameRound`       | A lightweight container for storing round-specific data.     |
 
 ---
@@ -83,13 +83,6 @@ This project demonstrates my ability to write testable, maintainable Python code
 ---
 
 ## 🧠 **Skills Showcased**
-
-![Skills](https://img.shields.io/badge/Skills-Modular_Design%2C_Pytest%2C_File_I%2FO-orange)
-
-### **Python Fundamentals**
-
-- Functions & modular code 🧩
-- Loops & conditionals 🌀
 
 ### **Object-Orientated Programming**
 
@@ -103,7 +96,7 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 - File I/O 📂: Programmatic creation and appending of CSV files
 - Error handling ⚠️: robust `try/except` blocks for user input validation
-- Cross-Platform Support 🧩: Logic to handle terminal clearing on both Windows (`cls`) and Linux/Mac (`clear`).
+- Cross-Platform Support 🔌: Logic to handle terminal clearing on both Windows (`cls`) and Linux/Mac (`clear`).
 
 ### **Soft Skills Demonstrated**
 
@@ -129,54 +122,12 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ```
 .
-├── project.py              # Main Application
-├── requirements.txt        # External dependencies
+├── project.py              # Main Application (class definitions & entry points)
+├── requirements.txt        # External dependencies (pytest, pyfiglet)
 ├── RPS_game_data.csv       # Automatically generated game logs
 ├── test_project.py         # Automated tests
 └── README.md               # Documentation
 ```
-
-### `project.py`
-
-Contains all game logic:
-
-- User prompts
-- Computer randomization
-- Winner determination
-- CSV logging
-- Scoreboard output
-
-### `requirements.txt`
-
-Contains all the requirements, dependencies necessary to run the game and the tests:
-
-- Python (>3.8)
-- Pyfiglet
-- Pytest
-
-### `RPS_game_data.csv`
-
-Stores:
-
-- Timestamp
-- User choice
-- Computer choice
-- Round result
-
-### **`test_project.py`**
-
-This file contains the automated test suite for the project, written using pytest.
-It validates:
-
-- Winner logic
-- Draw conditions
-- Losing conditions
-
-Additional tests can be added for CSV logging and input validation.
-
-### **`README.md`**
-
-Contains documentation of the project.
 
 ---
 
