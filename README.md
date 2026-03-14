@@ -114,11 +114,11 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ```
 .
-├── project.py
-├── requirements.txt
-├── RPS_game_data.csv
-├── test_project.py
-└── README.md
+├── project.py              # Main Application
+├── requirements.txt        # External dependencies
+├── RPS_game_data.csv       # Automatically generated game logs
+├── test_project.py         # Automated tests
+└── README.md               # Documentation
 ```
 
 ### `project.py`
