@@ -80,15 +80,15 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 - Encapsulation: Grouping related data and methods into classes to reduce global state.
 
-- Static Methods: Using @staticmethod for pure logic (determining a winner) that doesn't rely on instance data.
+- Static Methods: Using `@staticmethod` for pure logic (determining a winner) that doesn't rely on instance data.
 
 - Separation of Concerns: Dividing the project into UI, Logic, and Storage layers.
 
 ### **Intermediate Concepts**
 
 - File I/O 📂: Programmatic creation and appending of CSV files
-- Error handling ⚠️: robust try/except blocks for user input validation
-- Cross-Platform Support 🧩: Logic to handle terminal clearing on both Windows (cls) and Linux/Mac (clear).
+- Error handling ⚠️: robust `try/except` blocks for user input validation
+- Cross-Platform Support 🧩: Logic to handle terminal clearing on both Windows (`cls`) and Linux/Mac (`clear`).
 
 ### **Soft Skills Demonstrated**
 
@@ -283,7 +283,7 @@ This project is licensed under the MIT License - you are free to use, modify, an
 
 Created by **Sihle Ndlovu - @itsmesihle**
 
-This project showcases concepts learned in Harvard’s CS50P course through a structured, logged, and test-driven Python application.
+This project demonstrates the transition from a functional script to a scalable, class-based application, following clean code principles learned in Harvard’s CS50P.
 
 ---
 
