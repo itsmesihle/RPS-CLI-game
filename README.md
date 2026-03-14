@@ -232,22 +232,18 @@ This RPS game is still being worked on, constantly being updated
 
 🎮 Feature Additions
 
-- Difficulty modes
-- GUI version
+- Difficulty modes, implement a simple algorithm that tracks user patterns
+- Transition the UI layer from CLI to a graphical interface using Tkinter or PyQt.
 
 📊 Data & Analytics
 
-- CSV dashboard report
-- Persistent user profiles
+- CSV dashboard with "Win Rate" report
+- Machine learning
 
 Testing
 
 - Implement coverage.py and ensure coverage of < 90%
-- use of classes and properties
-
-Code
-
-- use classes instead of functions (OOP instead of procedural)
+- make use of properties
 
 ---
 
