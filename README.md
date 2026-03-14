@@ -23,6 +23,7 @@ This project demonstrates solid beginner-to-intermediate Python skills, includin
 ## 📚 Table of Contents
 
 - [Project Description](#-project-description)
+- [System Architecture](#-system-architecture)
 - [Why This Project Matters](#-why-this-project-matters)
 - [Skills Showcased](#-skills-showcased)
 - [Libraries & Modules Used](#-libraries--modules-used)
@@ -58,6 +59,12 @@ The computer randomly selects one of the three options, after which:
 - The round is logged with timestamp, scores and results into `RPS_game_data.csv`
 
 After the set number of rounds, a final scoreboard summary is displayed. After which the `RPS_game_date.csv` is saved, closed and stored on the local computer.
+
+---
+
+## 📌 **System Architecture**
+
+The project follows a modular design with four distinct layers to ensure the code is maintainable and testable:
 
 ---
 
