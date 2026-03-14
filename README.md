@@ -62,9 +62,17 @@ After the set number of rounds, a final scoreboard summary is displayed. After w
 
 ---
 
-## 📌 **System Architecture**
+## 🏗️ **System Architecture**
 
-The project follows a modular design with four distinct layers to ensure the code is maintainable and testable:
+The project built using a **Layered Orchestration** and follows a modular design. This ensures that the game logic is independent of the user interface and data storage.
+
+| Layer            | Class             | Responsibility                                               |
+| :--------------- | :---------------- | :----------------------------------------------------------- |
+| **Orchestrator** | `GameEngine`      | The "Brain" that coordinates the UI, Logic, and Data.        |
+| **Logic**        | `RPSGame`         | Handles pure game rules, win/loss math, and move validation. |
+| **Data**         | `GameDataManager` | Manages CSV initialization and persistent logging.           |
+| **UI/View**      | `WelcomeMessage`  | Manages ASCII art and terminal presentation.                 |
+| **Model**        | `GameRound`       | A lightweight container for storing round-specific data.     |
 
 ---
 
