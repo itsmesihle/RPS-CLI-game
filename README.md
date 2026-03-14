@@ -75,16 +75,20 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 - Functions & modular code 🧩
 - Loops & conditionals 🌀
-- Error handling ⚠️
-- Input validation 🔍
+
+### **Object-Orientated Programming**
+
+- Encapsulation: Grouping related data and methods into classes to reduce global state.
+
+- Static Methods: Using @staticmethod for pure logic (determining a winner) that doesn't rely on instance data.
+
+- Separation of Concerns: Dividing the project into UI, Logic, and Storage layers.
 
 ### **Intermediate Concepts**
 
-- File handling (CSV reading/writing) 📂
-- Logging timestamp data 🕒
-- Using 3rd‑party modules 🧩
-- Clean code structuring 🧱
-- Separation of concerns in functions 🔧
+- File I/O 📂: Programmatic creation and appending of CSV files
+- Error handling ⚠️: robust try/except blocks for user input validation
+- Cross-Platform Support 🧩: Logic to handle terminal clearing on both Windows (cls) and Linux/Mac (clear).
 
 ### **Soft Skills Demonstrated**
 
@@ -96,20 +100,15 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ## 📦 **Libraries & Modules Used**
 
-### **Standard Library**
+- `random` – Computer move randomization.
 
-- `random` – computer choice
-- `csv` – game data logging
-- `datetime` – timestamp generation
-- `os` – file checking
-- `json` – used in development/testing
+- `csv & os` – Persistent data storage and file path management.
 
-### **Third-Party Libraries**
+- `datetime` – Generating precise game-session timestamps.
 
-- **pyfiglet** → ASCII‑art title screen
-- **pytest** → unit-testing
+- `pyfiglet` – Renders high-quality ASCII titles.
 
----
+- `pytest` – Unit testing the logic layer.
 
 ## 🏗 **Project Structure**
 
