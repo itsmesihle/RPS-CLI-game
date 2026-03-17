@@ -8,7 +8,7 @@
 ![Last Commit](https://img.shields.io/github/last-commit/itsmesihle/RPS-CLI-Game)
 ![Issues](https://img.shields.io/github/issues/itsmesihle/RPS-CLI-Game)
 
-A clean, modular, and fully logged Rock–Paper–Scissors game written in **Python**, featuring:
+A clean, modular, and fully logged Rock–Paper–Scissors game written in **Python**, following professional OOP principles and architectural separation. :
 
 - User vs Computer CLI gameplay
 - Score tracking
@@ -64,7 +64,7 @@ After the set number of rounds, a final scoreboard summary is displayed. After w
 
 ## 🏗️ **System Architecture**
 
-The project built using a **Layered Orchestration** and follows a modular design. This ensures that the game logic is independent of the user interface and data storage.
+The project built using a **Layered Orchestration** and follows a modular design, ensuring that game logic is entirely decoupled from user interface and data persistence.
 
 | Layer            | Class             | Responsibility                                               |
 | :--------------- | :---------------- | :----------------------------------------------------------- |
@@ -86,11 +86,25 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ### **Object-Orientated Programming**
 
-- Encapsulation: Grouping related data and methods into classes to reduce global state.
+**- Encapsulation:** Grouping related data and methods into classes to reduce global state.
 
-- Static Methods: Using `@staticmethod` for pure logic (determining a winner) that doesn't rely on instance data.
+**- Static Methods:** Using `@staticmethod` for pure logic (determining a winner) that doesn't rely on instance data.
 
-- Separation of Concerns: Dividing the project into UI, Logic, and Storage layers.
+**- Separation of Concerns:** Dividing the project into UI, Logic, and Storage layers.
+
+### **Defensive Programming & Reliability**
+
+**- Input Validation:** Robust while True loops and try/except blocks to handle non-integer inputs and invalid moves.
+
+**- Session Integrity:** Implemented custom logic to log "aborted" status when a user exits mid-session via the 'q' command, ensuring data consistency in logs.
+
+**- Cross-Platform Support:** Dynamic terminal clearing logic for both Windows (cls) and Unix/Mac (clear).
+
+### **Software Engineering Best Practices**
+
+**- Automated Testing:** Unit tests using pytest to verify the logic layer.
+
+**- Data Persistence:** Programmatic file I/O handling with the csv module, including automatic header initialization.
 
 ### **Intermediate Concepts**
 
@@ -126,7 +140,7 @@ This project demonstrates my ability to write testable, maintainable Python code
 ├── requirements.txt        # External dependencies (pytest, pyfiglet)
 ├── RPS_game_data.csv       # Automatically generated game logs
 ├── test_project.py         # Automated tests
-└── README.md               # Documentation
+└── README.md               # Documentation of project
 ```
 
 ---
