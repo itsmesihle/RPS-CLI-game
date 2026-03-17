@@ -102,10 +102,34 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ### **Soft Skills Demonstrated**
 
-- Code Documentation 📝
-- Code readability & maintainability 👓
+- **Code Documentation 📝:** Writing clear READMEs and docstrings to ensure that the "why" behind the code is just as obvious as the "how," making onboarding easier for other developers.
+
+- **Code readability & maintainability 👓:** Prioritizing clean naming conventions and modular structure so the codebase remains easy to navigate and update long after the initial build.
 
 ---
+
+## 🧩 **Technical Challenges & Solutions**
+
+1. The "Infinite Recursion" Bug 🔄
+   The Challenge: During the implementation of class properties, the program would crash with a RecursionError.
+
+The Diagnosis: Internal setters were named identically to the class properties they were trying to update, causing the function to call itself infinitely.
+
+The Solution: Refactored the internal variable naming convention (using the \_variable syntax) to clearly distinguish between the property interface and the private data storage.
+
+2. Ensuring Data Integrity on Exit 🛑
+   The Challenge: When users used the q command to quit, the game would terminate, but the final session data would be lost or "dangling" without being recorded.
+
+The Diagnosis: The quit logic was bypassing the data logging layer.
+
+The Solution: Implemented an "Aborted" state within the GameRound model. Now, when a user quits, the GameEngine catches the signal, logs the "aborted" status to the CSV with a timestamp, and then performs a graceful shutdown.
+
+3. Decoupling the Logic from the UI 🏗️
+   The Challenge: Initially, game rules and print() statements were mixed together, making the code impossible to unit test with pytest.
+
+The Diagnosis: High "coupling" between the display and the math.
+
+The Solution: Applied the Separation of Concerns principle. I moved all game-rule calculations into the RPSGame class as pure functions that return values instead of printing text. This allowed for 100% test coverage of the game logic.
 
 ## 📦 **Libraries & Modules Used**
 
@@ -186,9 +210,11 @@ pytest test_project.py
 
 ---
 
-## 📝 **Status of Project**
+## 📝 **Project Roadmap**
 
 This RPS game is still being worked on, constantly being updated
+
+### **Past Improvements**
 
 ### **Future Improvements**
 
