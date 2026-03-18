@@ -3,13 +3,6 @@ import random
 import os
 from datetime import datetime
 from pyfiglet import Figlet
-# from threading import Timer
-
-# I am thinking that this code needs 4 main classes
-# 1. data layer (csv)
-# 2. ui layer (welcome message)
-# 3. game logic
-# 4. orchestrator class = engine of the game
 
 class GameRound:
     def __init__(self, user, computer, winner):
@@ -58,11 +51,8 @@ class WelcomeMessage:
         print(self.figlet.renderText('Rock. Paper. Scissors.'))
         print("Press 'q' at ANY TIME to quit.\n")
 
-# 3. LOGIC LAYER
-# pure logic of game lives here
-
 class RPSGame:
-    """Logic Layer - pure logic of game lives her"""
+    """3. Logic Layer - pure logic of game lives her"""
     CHOICES = {"r": "rock", "p": "paper", "s": "scissors"}
 
     def get_computer_choice(self):
