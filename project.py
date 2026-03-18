@@ -17,19 +17,21 @@ class GameRound:
         self.computer = computer
         self.winner = winner
 
-# 1. DATA HANDLING LAYER
-class GameDataManager: # manages the csv file
+class GameDataManager: 
+    """1. Data Layer - manages the csv file data """
     def __init__(self, filename="RPS_game_data.csv"):
         self.filename = filename
         self._initialize_csv()
 
     def _initialize_csv(self):
+        """checks if file exists or is empty in file path, then initialises it by writing headers at top of csv file"""
         if not os.path.exists(self.filename) or os.path.getsize(self.filename) == 0:
             with open(self.filename, "w", newline="") as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow(["timestamp", "user_choice", "computer_choice", "winner"])
 
     def log_result_to_csv(self, round_data):
+        """takes round_data as arg, creates timestamp and writes all of those into csv file"""
         timestamp = datetime.now().isoformat(timespec="seconds")
         with open(self.filename, "a", newline="") as csvfile:
             writer = csv.writer(csvfile)
@@ -40,14 +42,19 @@ class GameDataManager: # manages the csv file
                 round_data.winner
                 ])
 
-# 2. USER INTERFACE LAYER
 class WelcomeMessage:
-    """Handles visual presentation and ASCII art."""
+    """2. UI Layer - handles visual presentation and ASCII art."""
     def __init__(self, font='xsansb'):
         self.figlet = Figlet(font=font)
 
+    def _clear_terminal(self):
+        """Wipes the terminal screen based on the operating system"""
+        command = "cls" if os.name == "nt" else "clear"
+        os.system(command)
+
     def displayASCII(self):
-        os.system("cls" if os.name == "nt" else "clear") # dont know exactly what this does
+        """displays ascii art"""
+        self._clear_terminal()
         print(self.figlet.renderText('Rock. Paper. Scissors.'))
         print("Press 'q' at ANY TIME to quit.\n")
 
@@ -55,13 +62,14 @@ class WelcomeMessage:
 # pure logic of game lives here
 
 class RPSGame:
+    """Logic Layer - pure logic of game lives her"""
     CHOICES = {"r": "rock", "p": "paper", "s": "scissors"}
 
     def get_computer_choice(self):
         return random.choice(list(self.CHOICES.keys()))
     
     def get_user_choice(self):
-        """Gets user input and validates it"""
+        """Gets user input, validates it against CHOICES and returns user choice"""
         while True:
             move = input("Choose between (r/p/s): ").lower().strip()
             if move == 'q' or move in self.CHOICES:
@@ -70,6 +78,7 @@ class RPSGame:
     
     @staticmethod # like a calculator, doesn't care whats inside the 
     def determine_winner(user, computer):
+        """"checks win conditions for user, then returns 'user', 'computer' or 'draw'"""
         if user == computer:
             return "draw"
         win_conditions = [('r', 's'), ('s', 'p'), ('p', 'r')]
@@ -78,9 +87,10 @@ class RPSGame:
         return "computer"
     
     def play_single_round(self):
+        """play 1 round of RPS keep score of round, return GameRound with args as choices and winner"""
         user_choice = self.get_user_choice()
 
-        # CHECK FOR 'q' BEFORE CALCULATING WINNER
+        """Checks for 'q' before calculating winner, if true log GameRound with args """
         if user_choice == 'q':
             return GameRound(user='q', computer=None, winner='aborted')
         
@@ -89,8 +99,8 @@ class RPSGame:
         
         return GameRound(user_choice, comp_choice, winner)
 
-# 4. ORCHESTRATION LAYER or THE ENGINE (where everything works together)
 class GameEngine:
+    """  ORCHESTRATION LAYER - where everything works together"""
     def __init__(self):
         self.data = GameDataManager()
         self.ui = WelcomeMessage()
@@ -129,13 +139,13 @@ class GameEngine:
                 print("Game aborted by user")
                 break
 
-            # process visual feedback and score
             self._process_round_result(current_round)
 
+        """process visual feedback and score """
         self._display_final_score()
 
     def _process_round_result(self, round_data):
-        # updates scores and prints the outcome of a completed round
+        """ updates scores and prints the outcome of a completed round """
         u_name = self.engine.CHOICES[round_data.user]
         c_name = self.engine.CHOICES[round_data.computer]
 
