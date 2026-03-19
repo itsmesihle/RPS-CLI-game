@@ -47,7 +47,7 @@ class WelcomeMessage:
             move = input("Choose between (r/p/s): ").lower().strip()
             if move == 'q' or move in self.choices:
                 return move
-            print("Invalid input! please try again")
+            print("\nInvalid input! please try again")
 
     def get_number_of_rounds(self):
         """UI Method to intialises game setup"""
@@ -152,12 +152,12 @@ class GameEngine:
         c_name = self.engine.CHOICES[round_data.computer]
 
         if round_data.winner == "draw":
-            print(f"Draw! Both chose {u_name}")
+            print(f"Draw! You both chose {u_name}")
         elif round_data.winner == "user":
-            print(f"Win! {u_name.capitalize()} beats {c_name}.")
+            print(f"\nYou win! {u_name.capitalize()} beats {c_name}.")
             self.user_score += 1
         else:
-            print(f"Loss! {c_name.capitalize()} beats {u_name}.")
+            print(f"\n You lose! {c_name.capitalize()} beats {u_name}.")
             self.computer_score += 1
 
     def _display_final_score(self):
