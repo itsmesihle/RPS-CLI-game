@@ -110,26 +110,17 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ## 🧩 **Technical Challenges & Solutions**
 
-1. The "Infinite Recursion" Bug 🔄
-   The Challenge: During the implementation of class properties, the program would crash with a RecursionError.
+### 1. **Architecting for Scalability: From Procedural to Modular OOP**
 
-The Diagnosis: Internal setters were named identically to the class properties they were trying to update, causing the function to call itself infinitely.
+My initial implementation of the game began as a single procedural script where logic, file I/O, and UI were all tightly coupled. This created a brittle environment where changing a simple data-saving rule risked breaking the entire application flow. To address this, I refactored the codebase into a modular, object-oriented architecture centered on the Separation of Concerns. By isolating responsibilities into specialized classes—a GameDataManager for file I/O, a WelcomeMessage for UI, and a RPSGame for core rules—I transformed a simple script into a scalable system. This Orchestration Layer now allows for seamless future upgrades, such as migrating from CSV to a SQLite database, without ever compromising the integrity of the underlying game logic.
 
-The Solution: Refactored the internal variable naming convention (using the \_variable syntax) to clearly distinguish between the property interface and the private data storage.
+### 2. Achieving 100% Testability Through Decoupling
 
-2. Ensuring Data Integrity on Exit 🛑
-   The Challenge: When users used the q command to quit, the game would terminate, but the final session data would be lost or "dangling" without being recorded.
+A significant hurdle in the early development phase was the high degree of coupling between the game’s mathematical logic and its terminal-based display. Because input() prompts and print() statements were embedded directly within the game rules, the engine was "blindly" dependent on a human presence, making automated testing with pytest impossible. I resolved this by extracting all terminal interactions into the UI layer and refactoring the RPSGame class into a collection of pure functions. By ensuring the logic layer only accepts arguments and returns values, I achieved 100% test coverage. The system can now be verified instantly through automated scripts, ensuring the core engine remains robust regardless of how the user interface evolves.
 
-The Diagnosis: The quit logic was bypassing the data logging layer.
+### 3. Data Integrity and Graceful Termination
 
-The Solution: Implemented an "Aborted" state within the GameRound model. Now, when a user quits, the GameEngine catches the signal, logs the "aborted" status to the CSV with a timestamp, and then performs a graceful shutdown.
-
-3. Decoupling the Logic from the UI 🏗️
-   The Challenge: Initially, game rules and print() statements were mixed together, making the code impossible to unit test with pytest.
-
-The Diagnosis: High "coupling" between the display and the math.
-
-The Solution: Applied the Separation of Concerns principle. I moved all game-rule calculations into the RPSGame class as pure functions that return values instead of printing text. This allowed for 100% test coverage of the game logic.
+One of the more nuanced challenges involved handling user exits; specifically, ensuring that session data wasn't lost when a player used the q command to quit. Originally, the exit logic bypassed the data-logging routines, resulting in "dangling" sessions and incomplete history logs. I addressed this by implementing a formalized "Aborted" state within the GameRound model. This allows the system to catch a quit signal as a valid lifecycle event, triggering a graceful shutdown that timestamps and logs the final state to the CSV before termination. This focus on data integrity ensures a reliable and complete audit trail for every user session, regardless of how the game ends..
 
 ## 📦 **Libraries & Modules Used**
 
