@@ -39,6 +39,30 @@ class WelcomeMessage:
     """2. UI Layer - handles visual presentation and ASCII art."""
     def __init__(self, font='xsansb'):
         self.figlet = Figlet(font=font)
+        self.choices = {"r": "rock", "p": "paper", "s": "scissors"}
+
+    def get_user_choice(self):
+        """Gets user input, validates it against CHOICES and returns user choice"""
+        while True:
+            move = input("Choose between (r/p/s): ").lower().strip()
+            if move == 'q' or move in self.CHOICES:
+                return move
+            print("Invalid input! please try again")
+
+    def get_number_of_rounds(self):
+        """UI Method to intialises game setup"""
+        while True:
+            n = input("How many games would you like to play? ").lower().strip()
+            if n == 'q': 
+                print("Thanks for playing.")
+                return 
+            try:
+                rounds = int(n)
+                if rounds > 0: 
+                    break
+                print("Enter a positive number. ")
+            except ValueError:
+                print("Invalid input. Enter a number")
 
     def _clear_terminal(self):
         """Wipes the terminal screen based on the operating system"""
@@ -57,14 +81,6 @@ class RPSGame:
 
     def get_computer_choice(self):
         return random.choice(list(self.CHOICES.keys()))
-    
-    def get_user_choice(self):
-        """Gets user input, validates it against CHOICES and returns user choice"""
-        while True:
-            move = input("Choose between (r/p/s): ").lower().strip()
-            if move == 'q' or move in self.CHOICES:
-                return move
-            print("Invalid input! please try again")
     
     @staticmethod # like a calculator, doesn't care whats inside the 
     def determine_winner(user, computer):
@@ -101,21 +117,6 @@ class GameEngine:
     def start(self):
         #display message
         self.ui.displayASCII()
-
-        # int input validation
-        rounds = 0
-        while True:
-            n = input("How many games would you like to play? ").lower().strip()
-            if n == 'q': 
-                print("Thanks for playing.")
-                return 
-            try:
-                rounds = int(n)
-                if rounds > 0: 
-                    break
-                print("Enter a positive number. ")
-            except ValueError:
-                print("Invalid input. Enter a number")
 
         for i in range(rounds):
             print(f"\nRound {i + 1} of {rounds}")
