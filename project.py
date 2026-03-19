@@ -35,7 +35,7 @@ class GameDataManager:
                 round_data.winner
                 ])
 
-class WelcomeMessage:
+class GameUI:
     """2. UI Layer - handles visual presentation and ASCII art."""
     def __init__(self, font='xsansb'):
         self.figlet = Figlet(font=font)
@@ -108,7 +108,7 @@ class GameEngine:
     """  ORCHESTRATION LAYER - where everything works together"""
     def __init__(self):
         self.data = GameDataManager()
-        self.ui = WelcomeMessage()
+        self.ui = GameUI()
         self.engine = RPSGame()
         self.user_score = 0
         self.computer_score = 0
