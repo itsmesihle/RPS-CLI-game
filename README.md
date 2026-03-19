@@ -112,15 +112,17 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ### 1. **Architecting for Scalability: From Procedural to Modular OOP**
 
-My initial implementation of the game began as a single procedural script where logic, file I/O, and UI were all tightly coupled. This created a brittle environment where changing a simple data-saving rule risked breaking the entire application flow. To address this, I refactored the codebase into a modular, object-oriented architecture centered on the Separation of Concerns. By isolating responsibilities into specialized classes—a GameDataManager for file I/O, a WelcomeMessage for UI, and a RPSGame for core rules—I transformed a simple script into a scalable system. This Orchestration Layer now allows for seamless future upgrades, such as migrating from CSV to a SQLite database, without ever compromising the integrity of the underlying game logic.
+My initial implementation of the game began as a single procedural script where logic, file I/O, and UI were all tightly coupled. This created a brittle environment where changing a simple data-saving rule risked breaking the entire application flow. To address this, I refactored the codebase into a modular, object-oriented architecture centered on the Separation of Concerns. By isolating responsibilities into specialized classes; a `GameDataManager` for file I/O, a `WelcomeMessage` for UI, and a `RPSGame` for core rules. I transformed a simple script into a scalable system. This Orchestration Layer now allows for seamless future upgrades, such as migrating from CSV to a SQLite database, without ever compromising the integrity of the underlying game logic.
 
 ### 2. Achieving 100% Testability Through Decoupling
 
-A significant hurdle in the early development phase was the high degree of coupling between the game’s mathematical logic and its terminal-based display. Because input() prompts and print() statements were embedded directly within the game rules, the engine was "blindly" dependent on a human presence, making automated testing with pytest impossible. I resolved this by extracting all terminal interactions into the UI layer and refactoring the RPSGame class into a collection of pure functions. By ensuring the logic layer only accepts arguments and returns values, I achieved 100% test coverage. The system can now be verified instantly through automated scripts, ensuring the core engine remains robust regardless of how the user interface evolves.
+A significant hurdle in the early development phase was the high degree of coupling between the game’s mathematical logic and its terminal-based display. Because `input()` prompts and `print()` statements were embedded directly within the game rules, the engine was "blindly" dependent on a human presence, making automated testing with `pytest` impossible. I resolved this by extracting all terminal interactions into the UI layer and refactoring the `RPSGame` class into a collection of pure functions. By ensuring the logic layer only accepts arguments and returns values, I achieved 100% test coverage. The system can now be verified instantly through automated scripts, ensuring the core engine remains robust regardless of how the user interface evolves.
 
 ### 3. Data Integrity and Graceful Termination
 
-One of the more nuanced challenges involved handling user exits; specifically, ensuring that session data wasn't lost when a player used the q command to quit. Originally, the exit logic bypassed the data-logging routines, resulting in "dangling" sessions and incomplete history logs. I addressed this by implementing a formalized "Aborted" state within the GameRound model. This allows the system to catch a quit signal as a valid lifecycle event, triggering a graceful shutdown that timestamps and logs the final state to the CSV before termination. This focus on data integrity ensures a reliable and complete audit trail for every user session, regardless of how the game ends..
+One of the more nuanced challenges involved handling user exits; specifically, ensuring that session data wasn't lost when a player used the `q` command to quit. Originally, the exit logic bypassed the data-logging routines, resulting in "dangling" sessions and incomplete history logs. I addressed this by implementing a formalized "aborted" state within the GameRound model. This allows the system to catch a quit signal as a valid lifecycle event, triggering a graceful shutdown that timestamps and logs the final state to the CSV before termination. This focus on data integrity ensures a reliable and complete audit trail for every user session, regardless of how the game ends..
+
+---
 
 ## 📦 **Libraries & Modules Used**
 
@@ -133,6 +135,8 @@ One of the more nuanced challenges involved handling user exits; specifically, e
 - `pyfiglet` – Renders high-quality ASCII titles.
 
 - `pytest` – Unit testing the logic layer.
+
+---
 
 ## 🏗 **Project Structure**
 
