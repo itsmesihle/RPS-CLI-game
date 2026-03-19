@@ -45,7 +45,7 @@ class WelcomeMessage:
         """Gets user input, validates it against CHOICES and returns user choice"""
         while True:
             move = input("Choose between (r/p/s): ").lower().strip()
-            if move == 'q' or move in self.CHOICES:
+            if move == 'q' or move in self.choices:
                 return move
             print("Invalid input! please try again")
 
@@ -59,7 +59,7 @@ class WelcomeMessage:
             try:
                 rounds = int(n)
                 if rounds > 0: 
-                    break
+                    return rounds
                 print("Enter a positive number. ")
             except ValueError:
                 print("Invalid input. Enter a number")
@@ -76,7 +76,7 @@ class WelcomeMessage:
         print("Press 'q' at ANY TIME to quit.\n")
 
 class RPSGame:
-    """3. Logic Layer - pure logic of game lives her"""
+    """3. Logic Layer - pure logic of game lives here. no print() or input() logic here"""
     CHOICES = {"r": "rock", "p": "paper", "s": "scissors"}
 
     def get_computer_choice(self):
@@ -92,9 +92,8 @@ class RPSGame:
             return "user"
         return "computer"
     
-    def play_single_round(self):
+    def play_single_round(self, user_choice):
         """play 1 round of RPS keep score of round, return GameRound with args as choices and winner"""
-        user_choice = self.get_user_choice()
 
         """Checks for 'q' before calculating winner, if true log GameRound with args """
         if user_choice == 'q':
@@ -118,11 +117,23 @@ class GameEngine:
         #display message
         self.ui.displayASCII()
 
+        # 1. ask UI for number of rounds by calling function
+        rounds = self.ui.get_number_of_rounds()
+
+        if rounds == "q":
+            print("Thanks for playing. ")
+            return 
+
         for i in range(rounds):
             print(f"\nRound {i + 1} of {rounds}")
             # round is played and repeated inside loop
-            current_round = self.engine.play_single_round()
-            # LOG THE RESULT
+            # 2. ask UI for users move
+            move = self.ui.get_user_choice()
+
+            # 3. pass move into logic engine
+            current_round = self.engine.play_single_round(move)
+
+            # 4. log the result 
             self.data.log_result_to_csv(current_round)
 
             # check if we need to break loop
