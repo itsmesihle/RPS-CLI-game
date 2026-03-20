@@ -22,8 +22,6 @@ A clean, modular, and fully logged Rock–Paper–Scissors game written in **Pyt
 - [Project Structure](#-project-structure)
 - [How to Run](#️-how-to-run-the-game-and-the-tests)
 - [Future Improvements](#-future-improvements)
-- [Contributing](#-contributing)
-- [Issues](#-issues)
 - [License](#-license)
 - [Author & Attribution](#-author--attribution)
 - [Connect with Me](#-connect-with-me)
@@ -88,7 +86,7 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 - **Input Validation ⚠️:** Robust while True loops and try/except blocks to handle non-integer inputs and invalid moves.
 
-- **Session Integrity 📑:** Implemented custom logic to log "aborted" status when a user exits mid-session via the 'q' command, ensuring data consistency in logs.
+- **Session Integrity 📑:** Implemented custom logic to log "aborted" status when a user exits mid-session via the `'q'` command, ensuring data consistency in logs.
 
 - **Cross-Platform Support 🔌:** Dynamic terminal clearing logic for both Windows (cls) and Unix/Mac (clear).
 
@@ -102,9 +100,9 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ### **Soft Skills Demonstrated**
 
-- **Code Documentation 📝:** Writing clear READMEs and docstrings to ensure that the "why" behind the code is just as obvious as the "how," making onboarding easier for other developers.
+- **Code Documentation 📝:** Writing clear READMEs and docstrings to ensure that the "why" behind the code is just as obvious as the "how" making onboarding easier for other developers.
 
-- **Code readability & maintainability 👓:** Prioritizing clean naming conventions and modular structure so the codebase remains easy to navigate and update long after the initial build.
+- **Code readability & maintainability 👓:** Prioritizing clean naming conventions and modular structure so that the codebase remains easy to navigate and update long after the initial build.
 
 ---
 
@@ -200,7 +198,7 @@ python project.py
 5. Run the tests:
 
 ```bash
-pytest test_project.py
+python -m pytest test_project.py
 ```
 
 ---
@@ -230,34 +228,8 @@ This RPS game is still being worked on, constantly being updated
 
 Testing
 
-- Implement coverage.py and ensure coverage of < 90%
+- Implement coverage.py and ensure coverage of > 90%
 - make use of properties
-
----
-
-## 🤝 **Contributing**
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
-Please ensure your updates include:
-
-- Clear descriptions
-- Clean code formatting
-- Explanatory comments when needed
-- Please ensure your code passes all existing tests using pytest
-
----
-
-## 🐛 **Issues**
-
-If you encounter bugs, crashes, or unexpected behavior, feel free to open an Issue on the repository.
-
-Please include:
-
-- Steps to reproduce
-- Expected vs actual behavior
-- Screenshots or logs (if applicable)
-- Python version
 
 ---
 
