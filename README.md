@@ -120,13 +120,15 @@ A significant hurdle in the early development phase was the high degree of coupl
 
 One of the more nuanced challenges involved handling user exits; specifically, ensuring that session data wasn't lost when a player used the `q` command to quit. Originally, the exit logic bypassed the data-logging routines, resulting in "dangling" sessions and incomplete history logs. I addressed this by implementing a formalized "aborted" state within the GameRound model. This allows the system to catch a quit signal as a valid lifecycle event, triggering a graceful shutdown that timestamps and logs the final state to the CSV before termination. This focus on data integrity ensures a reliable and complete audit trail for every user session, regardless of how the game ends.
 
----
+### 4. Repository Hygiene: Managing Metadata and Cross-Platform Integrity
+
+As the project progressed, I encountered a "noisy" version control history where machine-generated caches (`__pycache__`) and local game data (`RPS_game_data.csv`) were being tracked. The challenge was to remove these files from the remote history without deleting the actual data from my local development environment. I resolved this by using the `git rm --cached` command, which surgically untracked the files while preserving the physical copies on my disk. Furthermore, to ensure the project remained functional for developers on macOS or Linux, I implemented a `.gitattributes` file to handle line-ending normalization (LF vs CRLF). These steps ensure the repository remains lightweight, private, and functional for developers on any operating system—demonstrating a professional commitment to collaborative standards and clean configuration management, ensuring the codebase is "production-ready" for any environment.
 
 ## 📦 **Libraries & Modules Used**
 
 - `random` – Computer move randomization.
 
-- `csv & os` – Persistent data storage and file path management.
+- `csv` & `os` – Persistent data storage and file path management.
 
 - `datetime` – Generating precise game-session timestamps.
 
@@ -140,11 +142,13 @@ One of the more nuanced challenges involved handling user exits; specifically, e
 
 ```
 .
+├── .gitattributes          # Cross-platform configuration (Line-ending normalization)
+├── .gitignore              # Prevents build artifacts and local data from being tracked
 ├── project.py              # Main Application (class definitions & entry points)
+├── README.md               # Documentation of project
 ├── requirements.txt        # External dependencies (pytest, pyfiglet)
 ├── RPS_game_data.csv       # Automatically generated game logs
-├── test_project.py         # Automated tests
-└── README.md               # Documentation of project
+└── test_project.py         # Automated tests
 ```
 
 ---
@@ -176,7 +180,7 @@ winget upgrade Python.Python.3
 3. Install dependencies:
 
 ```bash
-# --- Automatically install using requirements.txt ---
+# --- Automatically install dependencies using requirements.txt ---
 
 pip install -r requirements.txt
 ```
@@ -184,7 +188,7 @@ pip install -r requirements.txt
 OR
 
 ```bash
-# --- Manually install ---
+# --- Manually install dependencies ---
 
 pip install pyfiglet pytest
 ```
