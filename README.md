@@ -8,29 +8,20 @@
 ![Last Commit](https://img.shields.io/github/last-commit/itsmesihle/RPS-CLI-Game)
 ![Issues](https://img.shields.io/github/issues/itsmesihle/RPS-CLI-Game)
 
-A clean, modular, and fully logged Rock–Paper–Scissors game written in **Python**, featuring:
-
-- User vs Computer CLI gameplay
-- Score tracking
-- CSV game-logging with timestamps
-- Terminal ASCII-art welcome screen
-- Input validation & robust structure
-
-This project demonstrates solid beginner-to-intermediate Python skills, including modular design, input validation, file handling, and automated testing with pytest.
+A clean, modular, and fully logged Rock–Paper–Scissors game written in **Python**. This project demonstrates professional OOP principles, architectural separation, automated testing, file handling and output logging, and input validation.
 
 ---
 
 ## 📚 Table of Contents
 
 - [Project Description](#-project-description)
+- [System Architecture](#-system-architecture)
 - [Why This Project Matters](#-why-this-project-matters)
 - [Skills Showcased](#-skills-showcased)
 - [Libraries & Modules Used](#-libraries--modules-used)
 - [Project Structure](#-project-structure)
 - [How to Run](#️-how-to-run-the-game-and-the-tests)
 - [Future Improvements](#-future-improvements)
-- [Contributing](#-contributing)
-- [Issues](#-issues)
 - [License](#-license)
 - [Author & Attribution](#-author--attribution)
 - [Connect with Me](#-connect-with-me)
@@ -39,7 +30,7 @@ This project demonstrates solid beginner-to-intermediate Python skills, includin
 
 ## 📌 **Project Description**
 
-This is a console-based Rock–Paper–Scissors game where the welcomes the user with ASCII-art. The user is then prompted to select the number of rounds they would like to play:
+This is a console-based Rock–Paper–Scissors game which welcomes the user with ASCII-art. The user is then prompted to select the number of rounds they would like to play:
 
 ![An image of the ASCII-art welcome screen.](<./images/Screenshot%20(782).png> "ASCII-art welcome")
 
@@ -61,6 +52,20 @@ After the set number of rounds, a final scoreboard summary is displayed. After w
 
 ---
 
+## 🏗️ **System Architecture**
+
+The project built using a **Layered Orchestration** and follows a modular design, ensuring that game logic is entirely decoupled from user interface and data persistence.
+
+| Layer            | Class             | Responsibility                                               |
+| :--------------- | :---------------- | :----------------------------------------------------------- |
+| **Orchestrator** | `GameEngine`      | The "Brain" that coordinates the UI, Logic, and Data.        |
+| **Core Logic**   | `RPSGame`         | Handles pure game rules, win/loss math, and move validation. |
+| **Data**         | `GameDataManager` | Manages CSV initialization and persistent logging.           |
+| **UI**           | `WelcomeMessage`  | Manages ASCII art and terminal presentation.                 |
+| **Model**        | `GameRound`       | A lightweight container for storing round-specific data.     |
+
+---
+
 ## 🎯 Why This Project Matters
 
 This project demonstrates my ability to write testable, maintainable Python code while following good software engineering practices such as modularization, logging, and automated testing.
@@ -69,45 +74,75 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ## 🧠 **Skills Showcased**
 
-![Skills](https://img.shields.io/badge/Skills-Modular_Design%2C_Pytest%2C_File_I%2FO-orange)
+### **Object-Orientated Programming**
 
-### **Python Fundamentals**
+- **Encapsulation 💊:** Grouping related data and methods into classes to reduce global state.
 
-- Functions & modular code 🧩
-- Loops & conditionals 🌀
-- Error handling ⚠️
-- Input validation 🔍
+- **Static Methods 🧮:** Using `@staticmethod` for pure logic (determining a winner) that doesn't rely on instance data.
 
-### **Intermediate Concepts**
+- **Separation of Concerns 🧱:** Dividing the project into UI, Logic, and Storage layers.
 
-- File handling (CSV reading/writing) 📂
-- Logging timestamp data 🕒
-- Using 3rd‑party modules 🧩
-- Clean code structuring 🧱
-- Separation of concerns in functions 🔧
+### **Defensive Programming & Reliability**
+
+- **Input Validation ⚠️:** Robust while True loops and try/except blocks to handle non-integer inputs and invalid moves.
+
+- **Session Integrity 📑:** Implemented custom logic to log "aborted" status when a user exits mid-session via the `'q'` command, ensuring data consistency in logs.
+
+- **Cross-Platform Support 🔌:** Dynamic terminal clearing logic for both Windows (cls) and Unix/Mac (clear).
+
+### **Software Engineering Best Practices**
+
+- **Automated Testing 🧪:** Unit tests using pytest to verify the logic layer.
+
+- **Data Persistence 📂:** Programmatic file I/O handling with the csv module, including automatic header initialization.
+
+- **Version Control 🌿:** Managing code changes with Git and Github.
 
 ### **Soft Skills Demonstrated**
 
-- Code Documentation 📝
-- Code readability & maintainability 👓
-- Defensive programming 🛡️
+- **Code Documentation 📝:** Writing clear READMEs and docstrings to ensure that the "why" behind the code is just as obvious as the "how" making onboarding easier for other developers.
+
+- **Code readability & maintainability 👓:** Prioritizing clean naming conventions and modular structure so that the codebase remains easy to navigate and update long after the initial build.
 
 ---
 
+## 🧩 **Technical Challenges & Solutions**
+
+### 1. **Architecting for Scalability: From Procedural to Modular OOP**
+
+My initial implementation of the game began as a single procedural script where logic, file I/O, and UI were all tightly coupled. This created a brittle environment where changing a simple data-saving rule risked breaking the entire application flow. To address this, I refactored the codebase into a modular, object-oriented architecture centered on the Separation of Concerns.
+
+By isolating responsibilities into specialized classes; a `GameDataManager` for file I/O, a `WelcomeMessage` for UI, and a `RPSGame` for core rules. I transformed a simple script into a scalable system. This Orchestration Layer now allows for seamless future upgrades, such as migrating from CSV to a SQLite database, without ever compromising the integrity of the underlying game logic.
+
+### 2. Achieving 100% Testability Through Decoupling
+
+A significant hurdle in the early development phase was the high degree of coupling between the game’s mathematical logic and its terminal-based display. Because `input()` prompts and `print()` statements were embedded directly within the game rules, the engine was "blindly" dependent on a human presence, making automated testing with `pytest` impossible. I resolved this by extracting all terminal interactions into the UI layer and refactoring the `RPSGame` class into a collection of pure functions.
+
+By ensuring the logic layer only accepts arguments and returns values, I achieved 100% test coverage. The system can now be verified instantly through automated scripts, ensuring the core engine remains robust regardless of how the user interface evolves.
+
+### 3. Data Integrity and Graceful Termination
+
+One of the more nuanced challenges involved handling user exits; specifically, ensuring that session data wasn't lost when a player used the `q` command to quit. Originally, the exit logic bypassed the data-logging routines, resulting in "dangling" sessions and incomplete history logs.
+
+I addressed this by implementing a formalized "aborted" state within the GameRound model. This allows the system to catch a quit signal as a valid lifecycle event, triggering a graceful shutdown that timestamps and logs the final state to the CSV before termination. This focus on data integrity ensures a reliable and complete audit trail for every user session, regardless of how the game ends.
+
+### 4. Repository Management: Metadata and Cross-Platform Integrity
+
+As the project progressed, I encountered a "noisy" version control history where machine-generated caches (`__pycache__`) and local game data (`RPS_game_data.csv`) were being tracked. The challenge was to remove these files from the remote history without deleting the actual data from my local development environment. I resolved this by using the `git rm --cached` command, which surgically untracked the files while preserving the physical copies on my disk.
+
+Furthermore, to ensure the project remained functional for developers on macOS or Linux, I implemented a `.gitattributes` file to handle line-ending normalization (LF vs CRLF). These steps ensure the repository remains lightweight, private, and functional for developers on any operating system—demonstrating a professional commitment to collaborative standards and clean configuration management, ensuring the codebase is production-ready for any environment.
+
 ## 📦 **Libraries & Modules Used**
 
-### **Standard Library**
+- `random` – Computer move randomization.
 
-- `random` – computer choice
-- `csv` – game data logging
-- `datetime` – timestamp generation
-- `os` – file checking
-- `json` – used in development/testing
+- `csv` & `os` – Persistent data storage and file path management.
 
-### **Third-Party Libraries**
+- `datetime` – Generating precise game-session timestamps.
 
-- **pyfiglet** → ASCII‑art title screen
-- **pytest** → unit-testing
+- `pyfiglet` – Renders high-quality ASCII titles.
+
+- `pytest` – Unit testing the logic layer.
 
 ---
 
@@ -115,54 +150,14 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ```
 .
-├── project.py
-├── requirements.txt
-├── RPS_game_data.csv
-├── test_project.py
-└── README.md
+├── .gitattributes          # Cross-platform configuration (Line-ending normalization)
+├── .gitignore              # Prevents build artifacts and local data from being tracked
+├── project.py              # Main Application (class definitions & entry points)
+├── README.md               # Documentation of project
+├── requirements.txt        # External dependencies (pytest, pyfiglet)
+├── RPS_game_data.csv       # Automatically generated game logs
+└── test_project.py         # Automated tests
 ```
-
-### `project.py`
-
-Contains all game logic:
-
-- User prompts
-- Computer randomization
-- Winner determination
-- CSV logging
-- Scoreboard output
-
-### `requirements.txt`
-
-Contains all the requirements, dependencies necessary to run the game and the tests:
-
-- Python (>3.8)
-- Pyfiglet
-- Pytest
-
-### `RPS_game_data.csv`
-
-Stores:
-
-- Timestamp
-- User choice
-- Computer choice
-- Round result
-
-### **`test_project.py`**
-
-This file contains the automated test suite for the project, written using pytest.
-It validates:
-
-- Winner logic
-- Draw conditions
-- Losing conditions
-
-Additional tests can be added for CSV logging and input validation.
-
-### **`README.md`**
-
-Contains documentation of the project.
 
 ---
 
@@ -193,7 +188,7 @@ winget upgrade Python.Python.3
 3. Install dependencies:
 
 ```bash
-# --- Automatically install using requirements.txt ---
+# --- Automatically install dependencies using requirements.txt ---
 
 pip install -r requirements.txt
 ```
@@ -201,7 +196,7 @@ pip install -r requirements.txt
 OR
 
 ```bash
-# --- Manually install ---
+# --- Manually install dependencies ---
 
 pip install pyfiglet pytest
 ```
@@ -215,14 +210,16 @@ python project.py
 5. Run the tests:
 
 ```bash
-pytest test_project.py
+python -m pytest test_project.py
 ```
 
 ---
 
-## 📝 **Status of Project**
+## 📝 **Project Roadmap**
 
 This RPS game is still being worked on, constantly being updated
+
+### **Past Improvements**
 
 ### **Future Improvements**
 
@@ -233,48 +230,18 @@ This RPS game is still being worked on, constantly being updated
 
 🎮 Feature Additions
 
-- Difficulty modes
-- GUI version
+- Difficulty modes, implement a simple algorithm that tracks user patterns
+- Transition the UI layer from CLI to a graphical interface using Tkinter or PyQt.
 
 📊 Data & Analytics
 
-- CSV dashboard report
-- Persistent user profiles
+- CSV dashboard with "Win Rate" report
+- Machine learning
 
 Testing
 
-- Implement coverage.py and ensure coverage of < 90%
-- use of classes and properties
-
-Code
-
-- use classes instead of functions (OOP instead of procedural)
-
----
-
-## 🤝 **Contributing**
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
-Please ensure your updates include:
-
-- Clear descriptions
-- Clean code formatting
-- Explanatory comments when needed
-- Please ensure your code passes all existing tests using pytest
-
----
-
-## 🐛 **Issues**
-
-If you encounter bugs, crashes, or unexpected behavior, feel free to open an Issue on the repository.
-
-Please include:
-
-- Steps to reproduce
-- Expected vs actual behavior
-- Screenshots or logs (if applicable)
-- Python version
+- Implement coverage.py and ensure coverage of > 90%
+- make use of properties
 
 ---
 
@@ -288,7 +255,7 @@ This project is licensed under the MIT License - you are free to use, modify, an
 
 Created by **Sihle Ndlovu - @itsmesihle**
 
-This project showcases concepts learned in Harvard’s CS50P course through a structured, logged, and test-driven Python application.
+This project demonstrates the transition from a functional script to a scalable, class-based application, following clean code principles learned in Harvard’s CS50P.
 
 ---
 
