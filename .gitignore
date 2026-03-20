@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 
-# Testing & Coverage
+# Testing & Coverage files
 .pytest_cache/
 .coverage
 htmlcov/
