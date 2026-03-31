@@ -92,6 +92,8 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ### **Software Engineering Best Practices**
 
+- **CI/CD Pipeline (GitHub Actions) 🤖:** Configured an automated workflow to verify every code push. This ensures that the codebase remains stable and that new changes don't break existing logic.
+
 - **Automated Testing 🧪:** Unit tests using pytest to verify the logic layer.
 
 - **Data Persistence 📂:** Programmatic file I/O handling with the csv module, including automatic header initialization.
