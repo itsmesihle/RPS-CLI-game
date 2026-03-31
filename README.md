@@ -4,6 +4,7 @@
 ![Course](https://img.shields.io/badge/Harvard-CS50P-red)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
+![Tests](https://github.com/itsmesihle/RPS-CLI-Game/actions/workflows/python-tests.yml/badge.svg)
 ![Repo Size](https://img.shields.io/github/repo-size/itsmesihle/RPS-CLI-Game)
 ![Last Commit](https://img.shields.io/github/last-commit/itsmesihle/RPS-CLI-Game)
 ![Issues](https://img.shields.io/github/issues/itsmesihle/RPS-CLI-Game)
@@ -92,13 +93,13 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ### **Software Engineering Best Practices**
 
-- **CI/CD Pipeline (GitHub Actions) 🤖:** Configured an automated workflow to verify every code push. This ensures that the codebase remains stable and that new changes don't break existing logic.
+- **Version Control 🌿:** Utilizing Git and GitHub for granular change tracking, branching strategies, and collaborative code management.
 
-- **Automated Testing 🧪:** Unit tests using pytest to verify the logic layer.
+- **Automated Testing 🧪:** Developed a comprehensive suite of unit tests using pytest to verify the core logic layer and ensure 100% testability.
 
-- **Data Persistence 📂:** Programmatic file I/O handling with the csv module, including automatic header initialization.
+- **CI/CD Pipeline (GitHub Actions) 🤖:** Implemented an automated workflow to provision a Linux environment and execute tests on every push, ensuring a "fail-fast" development cycle.
 
-- **Version Control 🌿:** Managing code changes with Git and Github.
+- **Data Persistence 📂:** Engineered programmatic file I/O handling with the csv module, featuring automatic header initialization and session audit logging.
 
 ### **Soft Skills Demonstrated**
 
