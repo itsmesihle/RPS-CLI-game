@@ -3,7 +3,6 @@
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![Course](https://img.shields.io/badge/Harvard-CS50P-red)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
 ![Tests](https://github.com/itsmesihle/RPS-CLI-Game/actions/workflows/python-tests.yml/badge.svg)
 ![Repo Size](https://img.shields.io/github/repo-size/itsmesihle/RPS-CLI-Game)
 ![Last Commit](https://img.shields.io/github/last-commit/itsmesihle/RPS-CLI-Game)
@@ -115,7 +114,7 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 My initial implementation of the game began as a single procedural script where logic, file I/O, and UI were all tightly coupled. This created a brittle environment where changing a simple data-saving rule risked breaking the entire application flow. To address this, I refactored the codebase into a modular, object-oriented architecture centered on the Separation of Concerns.
 
-By isolating responsibilities into specialized classes; a `GameDataManager` for file I/O, a `WelcomeMessage` for UI, and a `RPSGame` for core rules. I transformed a simple script into a scalable system. This Orchestration Layer now allows for seamless future upgrades, such as migrating from CSV to a SQLite database, without ever compromising the integrity of the underlying game logic.
+By isolating responsibilities into specialized classes; a `GameDataManager` for file I/O, a `WelcomeMessage` for UI, and a `RPSGame` for core rules. I transformed a simple script into a scalable system. By applying Separation of Concerns (SoC) and Object-Oriented Programming (OOP) to decouple the UI, Logic, and Data layers, I've ensured maximum maintainability and a clear path for future feature expansion.
 
 ### 2. Architecting for Testability and Continuous Integration
 
@@ -124,6 +123,8 @@ In the early development phase, the game’s mathematical logic was tightly coup
 To move beyond manual local testing, I evolved the project by integrating a CI/CD pipeline via GitHub Actions, authoring a YAML workflow that provisions a fresh Ubuntu Linux environment on every code push. This automated system handles the entire lifecycle of a test run: it sets up the environment, installs necessary project dependencies, and executes the full suite of `pytest` cases in the cloud. This transition from a localized script to an automated, cloud-verified system ensures the core engine remains robust and protected against regression.
 
 The final result is a "production-ready" workflow where potential "breaking changes" are caught instantly in a neutral environment before they can ever reach the main branch. This architectural shift demonstrates a professional commitment to modern DevOps standards, data integrity, and software reliability. By treating the codebase as a verifiable system rather than just a functional script, the project is now highly maintainable and prepared for further scaling or migration to more complex data layers.
+
+This automated system handles the entire lifecycle of a test run: it sets up the environment, installs necessary project dependencies, and executes the full suite of `pytest` cases in the cloud via a YAML workflow. This transition ensures the core engine remains robust and protected against regression.
 
 ### 3. Data Integrity and Handling Non-Deterministic User Exits
 
