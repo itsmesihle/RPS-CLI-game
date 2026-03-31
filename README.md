@@ -54,7 +54,7 @@ After the set number of rounds, a final scoreboard summary is displayed. After w
 
 ## 🏗️ **System Architecture**
 
-The project built using a **Layered Orchestration** and follows a modular design, ensuring that game logic is entirely decoupled from user interface and data persistence.
+The project was built using a **Layered Orchestration** and follows a modular design, ensuring that game logic is entirely decoupled from user interface and data persistence.
 
 | Layer            | Class             | Responsibility                                               |
 | :--------------- | :---------------- | :----------------------------------------------------------- |
@@ -114,13 +114,15 @@ My initial implementation of the game began as a single procedural script where 
 
 By isolating responsibilities into specialized classes; a `GameDataManager` for file I/O, a `WelcomeMessage` for UI, and a `RPSGame` for core rules. I transformed a simple script into a scalable system. This Orchestration Layer now allows for seamless future upgrades, such as migrating from CSV to a SQLite database, without ever compromising the integrity of the underlying game logic.
 
-### 2. Achieving 100% Testability Through Decoupling
+### 2. Architecting for Testability and Continuous Integration
 
-A significant hurdle in the early development phase was the high degree of coupling between the game’s mathematical logic and its terminal-based display. Because `input()` prompts and `print()` statements were embedded directly within the game rules, the engine was "blindly" dependent on a human presence, making automated testing with `pytest` impossible. I resolved this by extracting all terminal interactions into the UI layer and refactoring the `RPSGame` class into a collection of pure functions.
+In the early development phase, the game’s mathematical logic was tightly coupled with its terminal-based display, creating a "Human Dependency" trap where input() prompts and print() statements were embedded directly within the core rules. This made automated testing with pytest impossible, as the test suite would "hang" indefinitely waiting for manual user input that didn't exist in a scripted environment. To resolve this, I refactored the architecture by extracting all terminal interactions into a dedicated UI Layer and converting the RPSGame class into a collection of pure functions. By ensuring the logic layer only accepts arguments and returns values, I successfully decoupled the engine from the console, achieving 100% test coverage for the core game mechanics.
 
-By ensuring the logic layer only accepts arguments and returns values, I achieved 100% test coverage. The system can now be verified instantly through automated scripts, ensuring the core engine remains robust regardless of how the user interface evolves.
+To move beyond manual local testing, I evolved the project by integrating a CI/CD pipeline via GitHub Actions, authoring a YAML workflow that provisions a fresh Ubuntu Linux environment on every code push. This automated system handles the entire lifecycle of a test run: it sets up the environment, installs necessary project dependencies, and executes the full suite of `pytest` cases in the cloud. This transition from a localized script to an automated, cloud-verified system ensures the core engine remains robust and protected against regression.
 
-### 3. Data Integrity and Graceful Termination
+The final result is a "production-ready" workflow where potential "breaking changes" are caught instantly in a neutral environment before they can ever reach the main branch. This architectural shift demonstrates a professional commitment to modern DevOps standards, data integrity, and software reliability. By treating the codebase as a verifiable system rather than just a functional script, the project is now highly maintainable and prepared for further scaling or migration to more complex data layers.
+
+### 3. Data Integrity and Handling Non-Deterministic User Exits
 
 One of the more nuanced challenges involved handling user exits; specifically, ensuring that session data wasn't lost when a player used the `q` command to quit. Originally, the exit logic bypassed the data-logging routines, resulting in "dangling" sessions and incomplete history logs.
 
@@ -151,6 +153,7 @@ Furthermore, to ensure the project remained functional for developers on macOS o
 ```
 .
 ├── .gitattributes          # Cross-platform configuration (Line-ending normalization)
+├── .github                 # Github Actions workflow CI/CD pipeline for automation testing
 ├── .gitignore              # Prevents build artifacts and local data from being tracked
 ├── project.py              # Main Application (class definitions & entry points)
 ├── README.md               # Documentation of project
