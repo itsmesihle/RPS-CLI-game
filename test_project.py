@@ -48,7 +48,7 @@ def test_csv_initialization(tmp_path):
     Note: tmp_path is pytest fixture which creates a temporary directory
     """
 
-    # creates a fath path inside temp folder
+    # creates a fake path inside temp folder
     test_file = tmp_path / "RPS_game_data.csv"
 
     # initializes the manager with the fake path
