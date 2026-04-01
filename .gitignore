@@ -1,6 +1,15 @@
+# media too big for github
 *.mp4 
 images/Opening-scene.png 
-<<<<<<< HEAD
-=======
+
+# Python bytecode
 __pycache__/
->>>>>>> v2-oop
+*.py[cod]
+
+# Data and database
+rps_history.db 
+RPS_game_data.csv
+
+# Virtual environments
+venv/
+.env
