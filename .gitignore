@@ -10,6 +10,9 @@ __pycache__/
 rps_history.db 
 RPS_game_data.csv
 
-# Virtual environments
+# Virtual environments...in future, .env will store API Keys and Passwords
 venv/
-.env
+.env 
+
+# IDE settings
+.vscode/
