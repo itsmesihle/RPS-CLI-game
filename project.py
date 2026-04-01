@@ -109,12 +109,15 @@ class RPSGame:
             return "user"
         return "computer"
     
-    def play_single_round(self, user_choice):
+    def play_single_round(self, user_choice=None):
         """play 1 round of RPS keep score of round, return GameRound with args as choices and winner"""
 
         """Checks for 'q' before calculating winner, if true log GameRound with args """
-        if user_choice == 'q':
+
+        #if no choice was passed, ask for is
+        if user_choice is None or user_choice == 'q':
             return GameRound(user='q', computer=None, winner='aborted')
+
         
         comp_choice = self.get_computer_choice()
         winner = self.determine_winner(user_choice, comp_choice)
@@ -143,8 +146,10 @@ class GameEngine:
 
         for i in range(rounds):
             print(f"\nRound {i + 1} of {rounds}")
+
+            move = self.ui.get_user_choice()
             # round is played and repeated inside loop
-            current_round = self.engine.play_single_round()
+            current_round = self.engine.play_single_round(move)
             # LOG THE RESULT
             self.data.log_result(current_round)
 

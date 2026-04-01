@@ -34,14 +34,11 @@ def test_choice_integrity(game):
     assert len(game.CHOICES) == 3
 
 # UNIT TEST: edge case
-def test_play_single_round_aborted(game, monkeypatch):
+def test_play_single_round_aborted(game):
     """tests the 'exit' logic by mocking user input"""
 
-    # this monkeypatch tells the code to pretend the user typed 'q'
-    monkeypatch.setattr('builtins.input', lambda _: 'q')
-
-    # calling function without passing q as argument, but rather monkeypatch
-    result = game.play_single_round()
+    # calling function passing q as argument
+    result = game.play_single_round('q')
 
     assert result.winner == 'aborted'
     assert result.user == 'q'
