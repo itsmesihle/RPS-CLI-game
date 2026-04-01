@@ -34,10 +34,15 @@ def test_choice_integrity(game):
     assert len(game.CHOICES) == 3
 
 # UNIT TEST: edge case
-def test_play_single_round_aborted(game):
-    """tests the 'exit' logic """
+def test_play_single_round_aborted(game, monkeypatch):
+    """tests the 'exit' logic by mocking user input"""
 
-    result = game.play_single_round('q')
+    # this monkeypatch tells the code to pretend the user typed 'q'
+    monkeypatch.setattr('builtins.input', lambda _: 'q')
+
+    # calling function without passing q as argument, but rather monkeypatch
+    result = game.play_single_round()
+
     assert result.winner == 'aborted'
     assert result.user == 'q'
     assert result.computer is None
@@ -59,4 +64,21 @@ def test_db_initialization(tmp_path):
     # tests if the file was created
     assert test_db.exists()
 
+# 3. TEST THE ROUND OBJECT
+def test_game_round_structure():
+    """Ensures the GameRound class stores data correctly."""
+    round_data = GameRound("p", "r", "user")
+    assert round_data.user == "p"
+    assert round_data.computer == "r"
+    assert round_data.winner == "user"
 
+def test_log_result(tmp_path):
+    """Tests if a game round is successfully saved to the database."""
+    test_db = tmp_path / "test_log.db"
+    manager = GameDataManager(db_name=str(test_db))
+    
+    # Create a dummy round to log
+    sample_round = GameRound(user="r", computer="s", winner="user")
+    
+    # This should run without raising any sqlite3.Error
+    manager.log_result(sample_round)
