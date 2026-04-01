@@ -167,7 +167,7 @@ Furthermore, to ensure the project remained functional for developers on macOS o
 ├── RPS_game_data.csv       # Old game logs (NOT TRACKED)
 ├── rps_history.db          # Local Database (NOT TRACKED)
 ├── test_project.py         # Automated tests
-└── view_table.py           # View results
+└── view_results.py         # View results
 
 ```
 
