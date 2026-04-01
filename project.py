@@ -1,4 +1,4 @@
-import csv
+import sqlite3
 import random
 import os
 from datetime import datetime
@@ -10,30 +10,47 @@ class GameRound:
         self.computer = computer
         self.winner = winner
 
-class GameDataManager: 
-    """1. Data Layer - manages the csv file data """
-    def __init__(self, filename="RPS_game_data.csv"):
-        self.filename = filename
-        self._initialize_csv()
+# 1. DATA HANDLING LAYER
+class GameDataManager:
+    """Manages the sqlite3 database for persistent game history"""
+    def __init__(self, db_name="rps_history.db"):
+        self.db_name = db_name
+        self._initialize_db()
 
-    def _initialize_csv(self):
-        """checks if file exists or is empty in file path, then initialises it by writing headers at top of csv file"""
-        if not os.path.exists(self.filename) or os.path.getsize(self.filename) == 0:
-            with open(self.filename, "w", newline="") as csvfile:
-                writer = csv.writer(csvfile)
-                writer.writerow(["timestamp", "user_choice", "computer_choice", "winner"])
+    def _initialize_db(self):
+        """creates the results table if it doesnt already exist"""
+        try:
+            with sqlite3.connect(self.db_name) as conn:
+                cursor = conn.cursor()
+                # Using schema
+                cursor.execute('''
+                    CREATE TABLE IF NOT EXISTS game_results(
+                               id INTEGER PRIMARY KEY AUTOINCREMENT,
+                               timestamp TEXT NOT NULL,
+                               user_choice TEXT,
+                               computer_choice TEXT,
+                               winner TEXT NOT NULL
+                               )
+                ''')
+                conn.commit()
+        except sqlite3.Error as e:
+            print(f"Database Initialisation Error: {e}")
 
-    def log_result_to_csv(self, round_data):
-        """takes round_data as arg, creates timestamp and writes all of those into csv file"""
+    def log_result(self, round_data):
+        """Saves a single round's data into the SQLite database."""
         timestamp = datetime.now().isoformat(timespec="seconds")
-        with open(self.filename, "a", newline="") as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow([
-                timestamp, 
-                round_data.user, 
-                round_data.computer, 
-                round_data.winner
-                ])
+        
+        try:
+            with sqlite3.connect(self.db_name) as conn:
+                cursor = conn.cursor()
+                # Security Best Practice: Using '?' placeholders to prevent SQL Injection
+                cursor.execute('''
+                    INSERT INTO game_results (timestamp, user_choice, computer_choice, winner)
+                    VALUES (?, ?, ?, ?)
+                ''', (timestamp, round_data.user, round_data.computer, round_data.winner))
+                conn.commit()
+        except sqlite3.Error as e:
+            print(f"Failed to log result: {e}")
 
 class GameUI:
     """2. UI Layer - handles visual presentation and ASCII art."""
@@ -127,14 +144,9 @@ class GameEngine:
         for i in range(rounds):
             print(f"\nRound {i + 1} of {rounds}")
             # round is played and repeated inside loop
-            # 2. ask UI for users move
-            move = self.ui.get_user_choice()
-
-            # 3. pass move into logic engine
-            current_round = self.engine.play_single_round(move)
-
-            # 4. log the result 
-            self.data.log_result_to_csv(current_round)
+            current_round = self.engine.play_single_round()
+            # LOG THE RESULT
+            self.data.log_result(current_round)
 
             # check if we need to break loop
             if current_round.winner == 'aborted':

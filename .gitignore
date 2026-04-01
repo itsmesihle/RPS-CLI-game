@@ -1,17 +1,18 @@
+# media too big for github
+*.mp4 
+images/Opening-scene.png 
+
 # Python bytecode
 __pycache__/
 *.py[cod]
 
-# Testing & Coverage files
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Video files (Too large for Git) and used for CS50P submission only
-*.mp4
-
-# images that need to be ignored
-images/Opening-scene.png 
-
-# Local Data
+# Data and database
+rps_history.db 
 RPS_game_data.csv
+
+# Virtual environments...in future, .env will store API Keys and Passwords
+venv/
+.env 
+
+# IDE settings
+.vscode/
