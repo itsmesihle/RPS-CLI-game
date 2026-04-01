@@ -156,14 +156,19 @@ Furthermore, to ensure the project remained functional for developers on macOS o
 
 ```
 .
-├── .gitattributes          # Cross-platform configuration (Line-ending normalization)
-├── .github                 # Github Actions workflow CI/CD pipeline for automation testing
+├── .gitattributes          # Cross-platform git configuration (Line-ending normalization)
+├── .github/workflows/      # Github Actions workflow CI/CD pipeline for automation testing
+    └── python-tests.yml
 ├── .gitignore              # Prevents build artifacts and local data from being tracked
-├── project.py              # Main Application (class definitions & entry points)
+├── migrate_data.py         # Move csv data to relational database
+├── project.py              # Main Application
 ├── README.md               # Documentation of project
 ├── requirements.txt        # External dependencies (pytest, pyfiglet)
-├── RPS_game_data.csv       # Automatically generated game logs
-└── test_project.py         # Automated tests
+├── RPS_game_data.csv       # Old game logs (NOT TRACKED)
+├── rps_history.db          # Local Database (NOT TRACKED)
+├── test_project.py         # Automated tests
+└── view_table.py           # View results
+
 ```
 
 ---
