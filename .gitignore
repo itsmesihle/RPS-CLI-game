@@ -16,3 +16,6 @@ venv/
 
 # IDE settings
 .vscode/
+
+# package in future???
+database.py
