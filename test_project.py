@@ -43,21 +43,20 @@ def test_play_single_round_aborted(game):
     assert result.computer is None
 
 # SYSTEM/IO TEST: csv file validation
-def test_csv_initialization(tmp_path):
-    """tests if the data layer correctly interacts with the file system
+def test_db_initialization(tmp_path):
+    """Tests if the database layer correctly initializes the SQLite file.
+    Uses 'tmp_path' to ensure we don't create real files in your project folder.
+
     Note: tmp_path is pytest fixture which creates a temporary directory
     """
 
     # creates a fake path inside temp folder
-    test_file = tmp_path / "RPS_game_data.csv"
+    test_db = tmp_path / "test_history.db"
 
     # initializes the manager with the fake path
-    manager = GameDataManager(filename=str(test_file))
+    manager = GameDataManager(db_name=str(test_db))
 
     # tests if the file was created
-    assert test_file.exists()
+    assert test_db.exists()
 
-    # check if the headers are correct?
-    with open(test_file, "r") as f:
-        header = f.readline().strip()
-        assert header == "timestamp,user_choice,computer_choice,winner"
+
