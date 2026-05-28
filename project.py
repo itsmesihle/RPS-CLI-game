@@ -140,7 +140,7 @@ class GameEngine:
         # 1. ask UI for number of rounds by calling function
         rounds = self.ui.get_number_of_rounds()
 
-        if rounds == "q":
+        if rounds is None:
             print("Thanks for playing. ")
             return 
 
