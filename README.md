@@ -1,8 +1,5 @@
 # Rock-Paper-Scissors CLI Game (Advanced Architecture)
 
-> 📖 **Read the Full Architectural Case Study:** I wrote a comprehensive deep-dive on Medium detailing exactly how this application was refactored from a tight script into a decoupled, enterprise-ready system. Check out the article here: **[From Script to System: Embracing Loose Coupling and Dependency Injection in Python](https://medium.com/@itsmesihle/from-script-to-system-embracing-loose-coupling-and-dependency-injection-in-python-162461da29c4)**
-___
-
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![Course](https://img.shields.io/badge/Harvard-CS50P-red)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -13,7 +10,9 @@ ___
 
 A clean, modular, and fully logged Rock–Paper–Scissors game written in **Python**. This project demonstrates professional OOP principles, architectural separation, automated testing, file handling and output logging, and input validation.
 
----
+
+> 📖 **Read the Full Architectural Case Study:** I wrote a comprehensive deep-dive on Medium detailing exactly how this application was refactored from a tight script into a decoupled, enterprise-ready system. Check out the article here: **[From Script to System: Embracing Loose Coupling and Dependency Injection in Python](https://medium.com/@itsmesihle/from-script-to-system-embracing-loose-coupling-and-dependency-injection-in-python-162461da29c4)**
+___
 
 ## 📚 Table of Contents
 
