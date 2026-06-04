@@ -1,4 +1,7 @@
-# Rock Paper Scissors Game
+# Rock-Paper-Scissors CLI Game (Advanced Architecture)
+
+> 📖 **Read the Full Architectural Case Study:** I wrote a comprehensive deep-dive on Medium detailing exactly how this application was refactored from a tight script into a decoupled, enterprise-ready system. Check out the article here: **[From Script to System: Embracing Loose Coupling and Dependency Injection in Python](YOUR_NEW_MEDIUM_LINK_HERE)**
+___
 
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![Course](https://img.shields.io/badge/Harvard-CS50P-red)
