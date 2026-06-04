@@ -1,6 +1,6 @@
 # Rock-Paper-Scissors CLI Game (Advanced Architecture)
 
-> 📖 **Read the Full Architectural Case Study:** I wrote a comprehensive deep-dive on Medium detailing exactly how this application was refactored from a tight script into a decoupled, enterprise-ready system. Check out the article here: **[From Script to System: Embracing Loose Coupling and Dependency Injection in Python](YOUR_NEW_MEDIUM_LINK_HERE)**
+> 📖 **Read the Full Architectural Case Study:** I wrote a comprehensive deep-dive on Medium detailing exactly how this application was refactored from a tight script into a decoupled, enterprise-ready system. Check out the article here: **[From Script to System: Embracing Loose Coupling and Dependency Injection in Python](https://medium.com/@itsmesihle/from-script-to-system-embracing-loose-coupling-and-dependency-injection-in-python-162461da29c4)**
 ___
 
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
