@@ -1,7 +1,7 @@
 import pytest
 import random
 # import class instead of function
-from project import RPSGame, GameRound, GameDataManager
+from src.project import RPSGame, GameRound, GameDataManager
 
 @pytest.fixture
 def game():
