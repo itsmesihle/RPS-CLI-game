@@ -23,7 +23,6 @@ class GameRound:
             raise ValueError(f"Invalid winner status: {value}. Must be one of {self.VALID_WINNERS}")
         self._winner = value
 
-
 # 1. DATA HANDLING LAYER
 class GameDataManager:
     """Manages the sqlite3 database for persistent game history"""
@@ -62,7 +61,6 @@ class GameDataManager:
                 conn.commit()
         except sqlite3.Error as e:
             print(f"Failed to log result: {e}")
-
 
 # 2. UI LAYER
 class GameUI:
@@ -105,7 +103,6 @@ class GameUI:
         print(self.figlet.renderText('Rock. Paper. Scissors.'))
         print("Press 'q' at ANY TIME to quit.\n")
 
-
 # 3. LOGIC LAYER
 class RPSGame:
     """Pure mathematical logic of game mechanics entirely decoupled from I/O."""
@@ -132,7 +129,6 @@ class RPSGame:
         comp_choice = self.get_computer_choice()
         winner = self.determine_winner(user_choice, comp_choice)
         return GameRound(user_choice, comp_choice, winner)
-
 
 # 4. ORCHESTRATION LAYER
 class GameEngine:
