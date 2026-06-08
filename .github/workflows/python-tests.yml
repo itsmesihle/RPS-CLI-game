@@ -22,5 +22,7 @@ jobs:
           pip install -r requirements.txt # 3. Install pytest and pyfiglet
 
       - name: Run tests with pytest
+        env:
+          PYTHONPATH: .
         run: |
           pytest tests/test_project.py # 4. Execute your test file
