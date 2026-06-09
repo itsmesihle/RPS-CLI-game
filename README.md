@@ -58,11 +58,11 @@ After the set number of rounds, a final scoreboard summary is displayed. After w
 
 ## 🏗️ System Architecture
 
-The project utilizes a **Layered Orchestration** model following strict Clean Architecture principles. Application files are split by module to enforce clear boundaries between stateless execution rules and stateful persistence.
+The project utilizes a **Layered Orchestration** model following strict clean architecture principles. Application files are split by module to enforce clear boundaries between stateless execution rules and stateful persistence.
 
 | Layer | Class | Responsibility |
 | :--- | :--- | :--- |
-| **Orchestrator** | `GameEngine` | The "brain" that coordinates UI, Core Logic, and Storage. |
+| **Orchestrator** | `GameEngine` | The "brain" that co-ordinates UI, Core Logic, and Storage. |
 | **Core Logic** | `RPSGame` | Handles pure mathematical game rules, win/loss scenarios and move validation. |
 | **Data** | `GameDataManager` | Manages relational interactions with the SQLite engine. |
 | **UI** | `GameUI` | Manages ASCII art, screen updates, user input and terminal presentation. |
@@ -174,6 +174,28 @@ Furthermore, to ensure the project remained functional for developers on macOS o
 ├── test_project.py         # Automated tests
 └── view_results.py         # View results
 
+```
+
+## 🧩 Project Structure
+
+```text
+.
+├── .github/workflows/       # Automated GitHub Actions test pipeline YAML
+├── data/                    # Local storage layer (Hosts rps_history.db - GIT IGNORED)
+├── media/                   # Assets (Images, UI screenshots, demo recordings)
+├── src/                     # Core operational source package
+│   ├── __init__.py          # Structural package initializer
+│   ├── migrate_data.py      # Relational SQL schema migration pipeline
+│   ├── project.py           # Main application entry point and game engine
+│   └── view_results.py      # SQLite analytics extraction utility
+├── tests/                   # Isolated test architecture
+│   └── test_project.py      # Pytest automated testing suites
+├── .dockerignore            # Filters out caches, environments, and local binaries
+├── .gitattributes           # Handles cross-platform line-ending normalization (LF)
+├── .gitignore               # Keeps repository free of environment and data junk
+├── Dockerfile               # Multi-layer Docker container initialization recipe
+├── README.md                # System engineering documentation
+└── requirements.txt         # External dependencies (pytest, pyfiglet)
 ```
 
 ---
