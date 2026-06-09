@@ -157,43 +157,25 @@ Furthermore, to ensure the project remained functional for developers on macOS o
 
 ---
 
-## 🏗 **Project Structure**
-
-```
-.
-├── .gitattributes          # Cross-platform git configuration (Line-ending normalization)
-├── .github/workflows/      # Github Actions workflow CI/CD pipeline for automation testing
-    └── python-tests.yml
-├── .gitignore              # Prevents build artifacts and local data from being tracked
-├── migrate_data.py         # Move csv data to relational database
-├── project.py              # Main Application
-├── README.md               # Documentation of project
-├── requirements.txt        # External dependencies (pytest, pyfiglet)
-├── RPS_game_data.csv       # Old game logs (NOT TRACKED)
-├── rps_history.db          # Local Database (NOT TRACKED)
-├── test_project.py         # Automated tests
-└── view_results.py         # View results
-
-```
-
 ## 🧩 Project Structure
 
 ```text
 .
 ├── .github/workflows/       # Automated GitHub Actions test pipeline YAML
-├── data/                    # Local storage layer (Hosts rps_history.db - GIT IGNORED)
+    └── python-tests.yml
+├── data/                    # Local storage layer
 ├── media/                   # Assets (Images, UI screenshots, demo recordings)
 ├── src/                     # Core operational source package
-│   ├── __init__.py          # Structural package initializer
-│   ├── migrate_data.py      # Relational SQL schema migration pipeline
-│   ├── project.py           # Main application entry point and game engine
-│   └── view_results.py      # SQLite analytics extraction utility
+    ├── __init__.py          # Structural package initializer
+    ├── migrate_data.py      # Relational SQL schema migration pipeline
+    ├── project.py           # Main application entry point and game engine
+    └── view_results.py      # SQLite analytics extraction utility
 ├── tests/                   # Isolated test architecture
-│   └── test_project.py      # Pytest automated testing suites
+    └── test_project.py      # Pytest automated testing suite
 ├── .dockerignore            # Filters out caches, environments, and local binaries
 ├── .gitattributes           # Handles cross-platform line-ending normalization (LF)
 ├── .gitignore               # Keeps repository free of environment and data junk
-├── Dockerfile               # Multi-layer Docker container initialization recipe
+├── Dockerfile               # Multi-layer Docker container initialization
 ├── README.md                # System engineering documentation
 └── requirements.txt         # External dependencies (pytest, pyfiglet)
 ```
