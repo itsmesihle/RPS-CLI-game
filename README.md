@@ -36,7 +36,7 @@ ___
 
 This is a console-based Rock–Paper–Scissors game which welcomes the user with ASCII-art. The user is then prompted to select the number of rounds they would like to play:
 
-![An image of the ASCII-art welcome screen.](<./images/Screenshot%20(782).png> "ASCII-art welcome")
+![An image of the ASCII-art welcome screen.](<media/images/Screenshot%20(782).png> "ASCII-art welcome")
 
 At this point the user is asked to select either rock, paper or scissors:
 
@@ -48,7 +48,7 @@ The computer randomly selects one of the three options, after which:
 
 - The winner is determined
 
-![Winner is determined](<./images/Screenshot%20(783).png> "Winner is determined")
+![Winner is determined](<media/images/Screenshot%20(783).png> "Winner is determined")
 
 - The round is logged with timestamp, scores and results into `RPS_game_data.csv`
 
@@ -56,30 +56,16 @@ After the set number of rounds, a final scoreboard summary is displayed. After w
 
 ---
 
-## 🏗️ **System Architecture**
-
-The project was built using a **Layered Orchestration** and follows a modular design, ensuring that game logic is entirely decoupled from user interface and data persistence.
-
-| Layer            | Class             | Responsibility                                               |
-| :--------------- | :---------------- | :----------------------------------------------------------- |
-| **Orchestrator** | `GameEngine`      | The "Brain" that coordinates the UI, Logic, and Data.        |
-| **Core Logic**   | `RPSGame`         | Handles pure game rules, win/loss math, and move validation. |
-| **Data**         | `GameDataManager` | Manages CSV initialization and persistent logging.           |
-| **UI**           | `GameUI`          | Manages ASCII art and terminal presentation.                 |
-| **Model**        | `GameRound`       | A lightweight container for storing round-specific data.     |
-
----
-
 ## 🏗️ System Architecture
 
-The project utilizes a **Layered Orchestration** model following strict Clean Architecture principles. Application files are modularly split to enforce clear boundaries between stateless execution rules and stateful persistence.
+The project utilizes a **Layered Orchestration** model following strict Clean Architecture principles. Application files are split by module to enforce clear boundaries between stateless execution rules and stateful persistence.
 
 | Layer | Class | Responsibility |
 | :--- | :--- | :--- |
-| **Orchestrator** | `GameEngine` | The "Brain" that coordinates UI, Core Logic, and Storage. |
-| **Core Logic** | `RPSGame` | Handles pure mathematical game rules and move validation. |
+| **Orchestrator** | `GameEngine` | The "brain" that coordinates UI, Core Logic, and Storage. |
+| **Core Logic** | `RPSGame` | Handles pure mathematical game rules, win/loss scenarios and move validation. |
 | **Data** | `GameDataManager` | Manages relational interactions with the SQLite engine. |
-| **UI**| `GameUI` | Manages ASCII art, screen updates, and terminal presentation. |
+| **UI** | `GameUI` | Manages ASCII art, screen updates, user input and terminal presentation. |
 | **Migrations** | Script Engine | Transforms legacy flat CSV rows into SQL schemas. |
 | **Storage & Analysis** | Script Engine | Standard SQL aggregations querying historic metric trends. |
 
@@ -91,7 +77,7 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ---
 
-## 🧠 **Skills Showcased**
+## 🧠 Skills Showcased
 
 ### **Object-Orientated Programming**
 
