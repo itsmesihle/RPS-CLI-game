@@ -182,6 +182,18 @@ Furthermore, to ensure the project remained functional for developers on macOS o
 
 ---
 
+```markdown
+## ▶️ Deployment and Execution
+
+You can run this system either as a local Python script or as an isolated, containerized environment using Docker.
+
+### Option A: Running via Docker Container (Recommended)
+Ensure Docker Desktop is running on your host system.
+
+1. **Build the image snapshot:**
+   ```bash
+   docker build -t rps-game-v4 .
+
 ## ▶️ **How to Run the game, and the tests**
 
 1. Navigate to your project:
