@@ -70,6 +70,21 @@ The project was built using a **Layered Orchestration** and follows a modular de
 
 ---
 
+## 🏗️ System Architecture
+
+The project utilizes a **Layered Orchestration** model following strict Clean Architecture principles. Application files are modularly split to enforce clear boundaries between stateless execution rules and stateful persistence.
+
+| Layer | Class | Responsibility |
+| :--- | :--- | :--- |
+| **Orchestrator** | `GameEngine` | The "Brain" that coordinates UI, Core Logic, and Storage. |
+| **Core Logic** | `RPSGame` | Handles pure mathematical game rules and move validation. |
+| **Data** | `GameDataManager` | Manages relational interactions with the SQLite engine. |
+| **UI**| `GameUI` | Manages ASCII art, screen updates, and terminal presentation. |
+| **Migrations** | Script Engine | Transforms legacy flat CSV rows into SQL schemas. |
+| **Storage & Analysis** | Script Engine | Standard SQL aggregations querying historic metric trends. |
+
+---
+
 ## 🎯 Why This Project Matters
 
 This project demonstrates my ability to write testable, maintainable Python code while following good software engineering practices such as modularization, logging, and automated testing.
