@@ -19,13 +19,14 @@ ___
 ## 📚 Table of Contents
 
 - [Project Description](#-project-description)
-- [System Architecture](#-system-architecture)
+- [System Architecture](#️-system-architecture)
 - [Why This Project Matters](#-why-this-project-matters)
 - [Skills Showcased](#-skills-showcased)
+- [Technical Challenges & Solutions](#-technical-challenges--solutions)
 - [Libraries & Modules Used](#-libraries--modules-used)
 - [Project Structure](#-project-structure)
-- [How to Run](#️-how-to-run-the-game-and-the-tests)
-- [Future Improvements](#-future-improvements)
+- [Deployment and Execution](#️-deployment-and-execution)
+- [Project Roadmap](#️-project-roadmap)
 - [License](#-license)
 - [Author & Attribution](#-author--attribution)
 - [Connect with Me](#-connect-with-me)
