@@ -47,10 +47,10 @@ At this point the user is asked to select either rock, paper or scissors:
 The computer randomly selects one of the three options, after which:
 
 - The winner is determined
+- The match metrics are instantly committed with a precise cryptographic timestamp, running scores, and state metrics into the relational database engine.
 
 ![Winner is determined](<media/images/Screenshot%20(783).png> "Winner is determined")
 
-- The round is logged with timestamp, scores and results into `RPS_game_data.csv`
 
 After the set number of rounds, a final scoreboard summary is displayed. After which the `RPS_game_data.csv` is saved, closed and stored on the local computer.
 
@@ -79,7 +79,7 @@ This project demonstrates my ability to write testable, maintainable Python code
 
 ## 🧠 Skills Showcased
 
-### **Object-Orientated Programming**
+### **Object-Oriented Programming**
 
 - **Encapsulation 💊:** Grouping related data and methods into classes to reduce global state.
 
@@ -125,7 +125,7 @@ By isolating responsibilities into specialized classes; a `GameDataManager` for 
 
 In the early development phase, the game’s mathematical logic was tightly coupled with its terminal-based display, creating a "Human Dependency" trap where input() prompts and print() statements were embedded directly within the core rules. This made automated testing with `pytest` impossible, as the test suite would "hang" indefinitely waiting for manual user input that didn't exist in a scripted environment. To resolve this, I refactored the architecture by extracting all terminal interactions into a dedicated UI Layer and converting the RPSGame class into a collection of pure functions. By ensuring the logic layer only accepts arguments and returns values, I successfully decoupled the engine from the console, achieving 100% test coverage for the core game mechanics.
 
-To move beyond manual local testing, I evolved the project by integrating a CI/CD pipeline via GitHub Actions, authoring a YAML workflow that provisions a fresh Ubuntu Linux environment on every code push. This automated system handles the entire lifecycle of a test run: it sets up the environment, installs necessary project dependencies, and executes the full suite of `pytest` cases in the cloud via a YAML workflow.. This transition from a localized script to an automated, cloud-verified system ensures the core engine remains robust and protected against regression.
+To move beyond manual local testing, I evolved the project by integrating a CI/CD pipeline via GitHub Actions, authoring a YAML workflow that provisions a fresh Ubuntu Linux environment on every code push.
 
 The final result is a "production-ready" workflow where potential "breaking changes" are caught instantly in a neutral environment before they can ever reach the main branch. This architectural shift demonstrates a professional commitment to modern DevOps standards, data integrity, and software reliability. By treating the codebase as a verifiable system rather than just a functional script, the project is now highly maintainable and prepared for further scaling or migration to more complex data layers.
 
@@ -211,23 +211,7 @@ Requires Python >= 3.10 and a standard terminal environment
 cd path/to/your/project
 ```
 
-**2. Install or update Python (≥3.8) on Windows:**
-
-```bash
-# --- Install Python ---
-
-winget install Python.Python.3
-```
-
-OR
-
-```bash
-# --- Upgrade Python ---
-
-winget upgrade Python.Python.3
-```
-
-**3. Install dependencies:**
+**2. Install core dependencies:**
 
 ```bash
 # --- Automatically install dependencies ---
@@ -243,18 +227,23 @@ OR
 pip install pyfiglet pytest
 ```
 
-**4. Run the game:**
+**3. Run the game:**
 
 ```bash
 python src/project.py
 ```
 
-**5. Run the tests:**
+**4. Execute automated tests:**
 
 ```bash
-python -m pytest test_project.py
+python -m pytest tests/test_project.py
 ```
 
+**5. Inspect historical data:**
+
+```bash
+python src/view_results.py
+```
 
 ---
 
@@ -269,6 +258,7 @@ This RPS game is still being worked on, constantly being updated
 - Resolved module visibility conflicts inside the remote GitHub Actions cloud virtualization matrix.
 
 ### **Future Roadmap Features**
+- Publish the production image to a public cloud registry (**Docker Hub**) for instant, zero-dependency environment deployment.
 - Implement an automated timeout fallback when users go "Away From Keyboard."
 - Incorporate pattern-tracking analytics algorithms to implement dynamic game difficulty adjustment.
 - Integrate a code coverage metric metric (`coverage.py`) target threshold of > 90% into the GitHub Actions runner.
