@@ -269,9 +269,9 @@ This RPS game is still being worked on, constantly being updated
 - Resolved module visibility conflicts inside the remote GitHub Actions cloud virtualization matrix.
 
 ### **Future Roadmap Features**
-⏳ Implement an automated timeout fallback when users go "Away From Keyboard."
-🎮 Incorporate pattern-tracking analytics algorithms to implement dynamic game difficulty adjustment.
-📊 Integrate a code coverage metric metric (`coverage.py`) target threshold of > 90% into the GitHub Actions runner.
+- Implement an automated timeout fallback when users go "Away From Keyboard."
+- Incorporate pattern-tracking analytics algorithms to implement dynamic game difficulty adjustment.
+- Integrate a code coverage metric metric (`coverage.py`) target threshold of > 90% into the GitHub Actions runner.
 
 ---
 
