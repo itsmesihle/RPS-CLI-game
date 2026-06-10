@@ -262,10 +262,6 @@ python -m pytest test_project.py
 
 This RPS game is still being worked on, constantly being updated
 
-### **Past Improvements**
-```markdown
-## 📝 Project Roadmap
-
 ### **Completed Milestone Enhancements**
 - [x] Migrated local history storage from flat file CSV parsing to a normalized SQLite relational schema.
 - [x] Implemented strict folder modularity isolating business code into a dedicated `/src` architecture.
@@ -273,18 +269,13 @@ This RPS game is still being worked on, constantly being updated
 - [x] Resolved module visibility conflicts inside the remote GitHub Actions cloud virtualization matrix.
 
 ### **Future Roadmap Features**
-- [ ] Implement an automated timeout fallback when users go "Away From Keyboard."
-- [ ] Incorporate pattern-tracking analytics algorithms to implement dynamic game difficulty adjustment.
+- [ ] ⏳ Implement an automated timeout fallback when users go "Away From Keyboard."
+- [ ] 🎮 Incorporate pattern-tracking analytics algorithms to implement dynamic game difficulty adjustment.
 - [ ] Integrate a code coverage metric metric (`coverage.py`) target threshold of > 90% into the GitHub Actions runner.
 
 ### **Future Improvements**
 
-⏳ Gameplay Improvements
-
-- Away From Keyboard timeout function
-- Auto-hide ASCII-art
-
-🎮 Feature Additions
+ Feature Additions
 
 - Difficulty modes, implement a simple algorithm that tracks user patterns
 - Transition the UI layer from CLI to a graphical interface using Tkinter or PyQt.
