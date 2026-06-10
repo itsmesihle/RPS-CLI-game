@@ -204,13 +204,14 @@ docker run -it rps-game-v4
 ## ▶️ **Option B: Running as a Standard Local Python Script**
 Requires Python >= 3.10 and a standard terminal environment
 
-1. Navigate to your project:
+
+**1. Navigate to your project:**
 
 ```bash
 cd path/to/your/project
 ```
 
-2. Install or update Python (≥3.8) on Windows:
+**2. Install or update Python (≥3.8) on Windows:**
 
 ```bash
 # --- Install Python ---
@@ -226,10 +227,10 @@ OR
 winget upgrade Python.Python.3
 ```
 
-3. Install dependencies:
+**3. Install dependencies:**
 
 ```bash
-# --- Automatically install dependencies using requirements.txt ---
+# --- Automatically install dependencies ---
 
 pip install -r requirements.txt
 ```
@@ -242,17 +243,18 @@ OR
 pip install pyfiglet pytest
 ```
 
-4. Run the game:
+**4. Run the game:**
 
 ```bash
 python src/project.py
 ```
 
-5. Run the tests:
+**5. Run the tests:**
 
 ```bash
 python -m pytest test_project.py
 ```
+
 
 ---
 
