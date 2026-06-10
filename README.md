@@ -263,32 +263,15 @@ python -m pytest test_project.py
 This RPS game is still being worked on, constantly being updated
 
 ### **Completed Milestone Enhancements**
-- [x] Migrated local history storage from flat file CSV parsing to a normalized SQLite relational schema.
-- [x] Implemented strict folder modularity isolating business code into a dedicated `/src` architecture.
-- [x] Developed comprehensive containerization parameters using custom `Dockerfile` blueprints.
-- [x] Resolved module visibility conflicts inside the remote GitHub Actions cloud virtualization matrix.
+- Migrated local history storage from flat file CSV parsing to a normalized SQLite relational schema.
+- Implemented strict folder modularity isolating business code into a dedicated `/src` architecture.
+- Developed comprehensive containerization parameters using custom `Dockerfile` blueprints.
+- Resolved module visibility conflicts inside the remote GitHub Actions cloud virtualization matrix.
 
 ### **Future Roadmap Features**
-- [ ] ⏳ Implement an automated timeout fallback when users go "Away From Keyboard."
-- [ ] 🎮 Incorporate pattern-tracking analytics algorithms to implement dynamic game difficulty adjustment.
-- [ ] Integrate a code coverage metric metric (`coverage.py`) target threshold of > 90% into the GitHub Actions runner.
-
-### **Future Improvements**
-
- Feature Additions
-
-- Difficulty modes, implement a simple algorithm that tracks user patterns
-- Transition the UI layer from CLI to a graphical interface using Tkinter or PyQt.
-
-📊 Data & Analytics
-
-- CSV dashboard with "Win Rate" report
-- Machine learning
-
-Testing
-
-- Implement coverage.py and ensure coverage of > 90%
-- make use of properties
+⏳ Implement an automated timeout fallback when users go "Away From Keyboard."
+🎮 Incorporate pattern-tracking analytics algorithms to implement dynamic game difficulty adjustment.
+📊 Integrate a code coverage metric metric (`coverage.py`) target threshold of > 90% into the GitHub Actions runner.
 
 ---
 
