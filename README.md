@@ -182,7 +182,6 @@ Furthermore, to ensure the project remained functional for developers on macOS o
 
 ---
 
-```markdown
 ## ▶️ Deployment and Execution
 
 You can run this system either as a local Python script or as an isolated, containerized environment using Docker.
@@ -190,11 +189,20 @@ You can run this system either as a local Python script or as an isolated, conta
 ### Option A: Running via Docker Container (Recommended)
 Ensure Docker Desktop is running on your host system.
 
-1. **Build the image snapshot:**
-   ```bash
-   docker build -t rps-game-v4 .
+**1. Build the image snapshot:**
 
-## ▶️ **How to Run the game, and the tests**
+```bash
+docker build -t rps-game-v4 .
+```
+
+**2. Execute interactive game loop within container:**
+
+```bash
+docker run -it rps-game-v4
+```
+
+## ▶️ **Option B: Running as a Standard Local Python Script**
+Requires Python >= 3.10 and a standard terminal environment
 
 1. Navigate to your project:
 
@@ -237,7 +245,7 @@ pip install pyfiglet pytest
 4. Run the game:
 
 ```bash
-python project.py
+python src/project.py
 ```
 
 5. Run the tests:
