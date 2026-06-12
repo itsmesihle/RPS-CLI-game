@@ -18,14 +18,14 @@ ___
 
 ## 📚 Table of Contents
 
-- [Project Description](#-project-description)
+## 📚 Table of Contents
+
+- [Project Description & Value Proposition](#-project-description--value-proposition)
 - [Deployment and Execution](#️-deployment-and-execution)
 - [System Architecture](#️-system-architecture)
 - [Technical Challenges & Solutions](#-technical-challenges--solutions)
-- [Why This Project Matters](#-why-this-project-matters)
 - [Skills Showcased](#-skills-showcased)
-- [Libraries & Modules Used](#-libraries--modules-used)
-- [Project Structure](#-project-structure)
+- [Codebase Layout & Dependency Management](#-codebase-layout--dependency-management)
 - [Project Roadmap](#-project-roadmap)
 - [License](#-license)
 - [Author & Attribution](#-author--attribution)
@@ -33,31 +33,7 @@ ___
 
 ---
 
-## 📌 **Project Description**
-
-This is a console-based Rock–Paper–Scissors game which welcomes the user with ASCII-art. The user is then prompted to select the number of rounds they would like to play:
-
-![An image of the ASCII-art welcome screen.](<media/images/Screenshot%20(782).png> "ASCII-art welcome")
-
-At this point the user is asked to select either rock, paper or scissors:
-
-- **(r)** rock
-- **(p)** paper
-- **(s)** scissors
-
-The computer randomly selects one of the three options, after which:
-
-- The winner is determined
-- The match metrics are instantly committed with a precise, synchronized UTC timestamp, running scores, and state metrics into the relational database engine.
-
-![Winner is determined](<media/images/Screenshot%20(783).png> "Winner is determined")
-
-
-After the set number of rounds, a final scoreboard summary is displayed. After which the `RPS_game_data.csv` is saved, closed and stored on the local computer.
-
----
-
-## 📌 **Project Description & Engineering Objectives**
+## 📌 **Project Description & Value Proposition**
 
 This console-based Rock-Paper-Scissors system transforms a historically simple game into a robust, enterprise-grade architecture. Built to demonstrate advanced software engineering workflows, the project models clean Object-Oriented Programming (OOP) principles, rigorous test-driven design, and containerized deployment infrastructure.
 
@@ -228,27 +204,17 @@ Furthermore, to ensure the project remained functional for developers on macOS o
 
 ---
 
-## 📦 **Libraries & Modules Used**
+## 📦 Codebase Layout & Dependency Management
 
-- `random` – Computer move randomization.
+To maintain a clean and production-ready workspace, this repository completely segregates business logic from data storage, testing modules, and container assets. Below is the comprehensive architectural layout alongside the third-party libraries driving the core environment.
 
-- `csv` & `os` – Persistent data storage and file path management.
-
-- `datetime` – Generating precise game-session timestamps.
-
-- `pyfiglet` – Renders high-quality ASCII titles.
-
-- `pytest` – Unit testing the logic layer.
-
----
-
-## 🧩 Project Structure
+### 🧩 Project Structure
 
 ```text
 .
 ├── .github/workflows/       # Automated GitHub Actions test pipeline YAML
     └── python-tests.yml
-├── data/                    # Local storage layer
+├── data/                    # Local storage layer (Ignored by Git in production)
 ├── media/                   # Assets (Images, UI screenshots, demo recordings)
 ├── src/                     # Core operational source package
     ├── __init__.py          # Structural package initializer
@@ -262,8 +228,21 @@ Furthermore, to ensure the project remained functional for developers on macOS o
 ├── .gitignore               # Keeps repository free of environment and data junk
 ├── Dockerfile               # Multi-layer Docker container initialization
 ├── README.md                # System engineering documentation
-└── requirements.txt         # External dependencies (pytest, pyfiglet)
+└── requirements.txt         # External dependencies manifest
 ```
+
+### 🗂️ Environment Dependencies & Core Modules
+
+To run this application, the engine utilizes a mix of Python standard built-in utilities and pinned third-party packages managed within the container environment:
+
+* **Third-Party Packages (Installed via PyPI/Pip):**
+- `pytest` – Drives the automated unit testing architecture to isolate and validate the stateless core logic.
+- `pyfiglet` – Implements ASCII-art rendering algorithms inside the UI layer for an immersive terminal experience.
+
+* **Python Standard Standard Libraries:**
+- `random` – Powers computer move randomisation subroutines.
+- `csv` & `os` – Manages local persistent auditing streams and cross-platform file paths.
+- `datetime` – Generates accurate, synchronized timestamps for match metrics.
 
 ---
 
@@ -282,7 +261,7 @@ This RPS game is still being worked on, constantly being updated
 - Automate Docker Hub Publishing via CI/CD.  Extend the existing GitHub Actions workflow to automatically build and push the Docker image on every tagged release.
 - Implement an automated timeout fallback when users go "Away From Keyboard."
 - Incorporate pattern-tracking analytics algorithms to implement dynamic game difficulty adjustment.
-- Integrate a code coverage metric metric (`coverage.py`) target threshold of > 90% into the GitHub Actions runner.
+- Integrate a code coverage metric (`coverage.py`) target threshold of > 90% into the GitHub Actions runner.
 
 ---
 
