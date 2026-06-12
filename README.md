@@ -187,19 +187,19 @@ Furthermore, to ensure the project remained functional for developers on macOS o
 
 You can run this system either as a local Python script or as an isolated, containerized environment using Docker.
 
-### Option A: Running via Docker Container (Recommended)
-Ensure Docker Desktop is running on your host system.
+### Option A: Running via Docker Hub Container (Recommended)
 
-**1. Build the image snapshot:**
+This system is fully containerized and published to Docker Hub. You do not need Python, Git, or any local dependencies installed on your host system—only Docker.
 
+**1. Pull the public image directly from Docker Hub:**
 ```bash
-docker build -t rps-game-v4 .
+docker pull itsmesihle/rps-cli-game:latest
 ```
 
 **2. Execute interactive game loop within container:**
 
 ```bash
-docker run -it rps-game-v4
+docker run -it --name rps-game itsmesihle/rps-cli-game:latest
 ```
 
 ## ▶️ **Option B: Running as a Standard Local Python Script**
@@ -253,6 +253,10 @@ python src/view_results.py
 This RPS game is still being worked on, constantly being updated
 
 ### **Completed Milestone Enhancements**
+- Published Production-Ready Container Image - pushed the optimized multi-stage build directly to [Docker Hub (itsmesihle/rps-cli-game)](https://hub.docker.com/r/itsmesihle/rps-cli-game) for zero-dependency, single-command cloud execution.
+- Migrated local history storage from flat file CSV parsing to a normalized SQLite relational schema.
+- Implemented strict folder modularity isolating business code into a dedicated `/src` architecture.
+- Developed comprehensive containerization parameters using custom `Dockerfile` blueprints.
 - Migrated local history storage from flat file CSV parsing to a normalized SQLite relational schema.
 - Implemented strict folder modularity isolating business code into a dedicated `/src` architecture.
 - Developed comprehensive containerization parameters using custom `Dockerfile` blueprints.
