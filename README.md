@@ -1,8 +1,7 @@
 # Rock-Paper-Scissors CLI Game (Advanced DevOps & Architecture)
 
-![Python](https://img.shields.io/badge/python-3.11-blue?logo=python&logoColor=white)
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?logo=docker&logoColor=white)
 [![Docker Hub](https://img.shields.io/badge/docker-hub-%230db7ed.svg?logo=docker&logoColor=white)](https://hub.docker.com/r/itsmesihle/rps-cli-game)
+![Python](https://img.shields.io/badge/python-3.11-blue?logo=python&logoColor=white)
 ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?logo=sqlite&logoColor=white)
 ![Course](https://img.shields.io/badge/Harvard-CS50P-red)
 ![Tests](https://github.com/itsmesihle/RPS-CLI-Game/actions/workflows/python-tests.yml/badge.svg)
