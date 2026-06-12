@@ -19,13 +19,13 @@ ___
 ## 📚 Table of Contents
 
 - [Project Description](#-project-description)
+- [Deployment and Execution](#️-deployment-and-execution)
 - [System Architecture](#️-system-architecture)
+- [Technical Challenges & Solutions](#-technical-challenges--solutions)
 - [Why This Project Matters](#-why-this-project-matters)
 - [Skills Showcased](#-skills-showcased)
-- [Technical Challenges & Solutions](#-technical-challenges--solutions)
 - [Libraries & Modules Used](#-libraries--modules-used)
 - [Project Structure](#-project-structure)
-- [Deployment and Execution](#️-deployment-and-execution)
 - [Project Roadmap](#-project-roadmap)
 - [License](#-license)
 - [Author & Attribution](#-author--attribution)
@@ -48,12 +48,77 @@ At this point the user is asked to select either rock, paper or scissors:
 The computer randomly selects one of the three options, after which:
 
 - The winner is determined
-- The match metrics are instantly committed with a precise cryptographic timestamp, running scores, and state metrics into the relational database engine.
+- The match metrics are instantly committed with a precise, synchronized UTC timestamp, running scores, and state metrics into the relational database engine.
 
 ![Winner is determined](<media/images/Screenshot%20(783).png> "Winner is determined")
 
 
 After the set number of rounds, a final scoreboard summary is displayed. After which the `RPS_game_data.csv` is saved, closed and stored on the local computer.
+
+---
+
+## ▶️ Deployment and Execution
+
+You can run this system either as a local Python script or as an isolated, containerized environment using Docker.
+
+### Option A: Running via Docker Hub Container (Recommended)
+
+This system is fully containerized and published to Docker Hub. You do not need Python, Git, or any local dependencies installed on your host system—only Docker.
+
+**1. Pull the public image directly from Docker Hub:**
+```bash
+docker pull itsmesihle/rps-cli-game:latest
+```
+
+**2. Execute interactive game loop within container:**
+
+```bash
+docker run -it --name rps-game itsmesihle/rps-cli-game:latest
+```
+
+## ▶️ **Option B: Running as a Standard Local Python Script**
+Requires Python >= 3.10 and a standard terminal environment
+
+
+**1. Navigate to your project:**
+
+```bash
+cd path/to/your/project
+```
+
+**2. Install core dependencies:**
+
+```bash
+# --- Automatically install dependencies ---
+
+pip install -r requirements.txt
+```
+
+OR
+
+```bash
+# --- Manually install dependencies ---
+
+pip install pyfiglet pytest
+```
+
+**3. Run the game:**
+
+```bash
+python src/project.py
+```
+
+**4. Execute automated tests:**
+
+```bash
+python -m pytest tests/test_project.py
+```
+
+**5. Inspect historical data:**
+
+```bash
+python src/view_results.py
+```
 
 ---
 
@@ -179,71 +244,6 @@ Furthermore, to ensure the project remained functional for developers on macOS o
 ├── Dockerfile               # Multi-layer Docker container initialization
 ├── README.md                # System engineering documentation
 └── requirements.txt         # External dependencies (pytest, pyfiglet)
-```
-
----
-
-## ▶️ Deployment and Execution
-
-You can run this system either as a local Python script or as an isolated, containerized environment using Docker.
-
-### Option A: Running via Docker Hub Container (Recommended)
-
-This system is fully containerized and published to Docker Hub. You do not need Python, Git, or any local dependencies installed on your host system—only Docker.
-
-**1. Pull the public image directly from Docker Hub:**
-```bash
-docker pull itsmesihle/rps-cli-game:latest
-```
-
-**2. Execute interactive game loop within container:**
-
-```bash
-docker run -it --name rps-game itsmesihle/rps-cli-game:latest
-```
-
-## ▶️ **Option B: Running as a Standard Local Python Script**
-Requires Python >= 3.10 and a standard terminal environment
-
-
-**1. Navigate to your project:**
-
-```bash
-cd path/to/your/project
-```
-
-**2. Install core dependencies:**
-
-```bash
-# --- Automatically install dependencies ---
-
-pip install -r requirements.txt
-```
-
-OR
-
-```bash
-# --- Manually install dependencies ---
-
-pip install pyfiglet pytest
-```
-
-**3. Run the game:**
-
-```bash
-python src/project.py
-```
-
-**4. Execute automated tests:**
-
-```bash
-python -m pytest tests/test_project.py
-```
-
-**5. Inspect historical data:**
-
-```bash
-python src/view_results.py
 ```
 
 ---
