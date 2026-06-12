@@ -257,13 +257,10 @@ This RPS game is still being worked on, constantly being updated
 - Migrated local history storage from flat file CSV parsing to a normalized SQLite relational schema.
 - Implemented strict folder modularity isolating business code into a dedicated `/src` architecture.
 - Developed comprehensive containerization parameters using custom `Dockerfile` blueprints.
-- Migrated local history storage from flat file CSV parsing to a normalized SQLite relational schema.
-- Implemented strict folder modularity isolating business code into a dedicated `/src` architecture.
-- Developed comprehensive containerization parameters using custom `Dockerfile` blueprints.
 - Resolved module visibility conflicts inside the remote GitHub Actions cloud virtualization matrix.
 
 ### **Future Roadmap Features**
-- Publish the production image to a public cloud registry (**Docker Hub**) for instant, zero-dependency environment deployment.
+- Automate Docker Hub Publishing via CI/CD.  Extend the existing GitHub Actions workflow to automatically build and push the Docker image on every tagged release.
 - Implement an automated timeout fallback when users go "Away From Keyboard."
 - Incorporate pattern-tracking analytics algorithms to implement dynamic game difficulty adjustment.
 - Integrate a code coverage metric metric (`coverage.py`) target threshold of > 90% into the GitHub Actions runner.
