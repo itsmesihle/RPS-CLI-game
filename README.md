@@ -59,7 +59,7 @@ After the set number of rounds, a final scoreboard summary is displayed. After w
 
 ## 📌 **Project Description & Engineering Objectives**
 
-This console-based Rock–Paper–Scissors system transforms a historically simple game into a robust, enterprise-grade architecture. Built to demonstrate advanced software engineering workflows, the project models clean Object-Oriented Programming (OOP) principles, rigorous test-driven design, and containerized deployment infrastructure.
+This console-based Rock-Paper-Scissors system transforms a historically simple game into a robust, enterprise-grade architecture. Built to demonstrate advanced software engineering workflows, the project models clean Object-Oriented Programming (OOP) principles, rigorous test-driven design, and containerized deployment infrastructure.
 
 ### The Core Experience
 The application greets players with dynamic ASCII-art title sequences before prompting them for an interactive session layout:
@@ -71,7 +71,7 @@ During live gameplay, the user is prompted to select their move:
 * **(p)** Paper
 * **(s)** Scissors
 
-The engine evaluates input rules, determines the outcome, and seamlessly executes an atomic database transaction. Match metrics—including precise synchronized UTC timestamps, running scores, and session states—are instantly committed to a relational SQLite engine.
+The engine evaluates input rules, determines the outcome, and seamlessly executes an atomic database transaction. Match metrics including precise synchronized UTC timestamps, running scores, and session states are committed to a relational SQLite engine.
 
 ![Winner is determined](media/images/Screenshot%20(783).png "Winner is determined")
 
@@ -99,11 +99,11 @@ docker pull itsmesihle/rps-cli-game:latest
 docker run -it --name rps-game itsmesihle/rps-cli-game:latest
 ```
 
-## ▶️ **Option B: Running as a Standard Local Python Script**
+### ▶️ **Option B: Running as a Standard Local Python Script**
 Requires Python >= 3.10 and a standard terminal environment
 
 
-**1. Navigate to your project:**
+**1. Navigate to your project path/location:**
 
 ```bash
 cd path/to/your/project
@@ -160,9 +160,35 @@ The project utilizes a **Layered Orchestration** model following strict clean ar
 
 ---
 
-## 🎯 Why This Project Matters
+## 🧩 **Technical Challenges & Solutions**
 
-This project demonstrates my ability to write testable, maintainable Python code while following good software engineering practices such as modularization, logging, and automated testing.
+### 1. **Architecting for Scalability: From Procedural to Modular OOP**
+
+My initial implementation of the game began as a single procedural script where logic, file I/O, and UI were all tightly coupled. This created a brittle environment where changing a simple data-saving rule risked breaking the entire application flow. To address this, I refactored the codebase into a modular, object-oriented architecture centered on the Separation of Concerns.
+
+By isolating responsibilities into specialized classes; a `GameDataManager` for file I/O, a `WelcomeMessage` for UI, and a `RPSGame` for core rules. I transformed a simple script into a scalable system. By applying Separation of Concerns (SoC) and Object-Oriented Programming (OOP) to decouple the UI, Logic, and Data layers, I've ensured maximum maintainability and a clear path for future feature expansion.
+
+### 2. Architecting for Testability and Continuous Integration
+
+In the early development phase, the game’s mathematical logic was tightly coupled with its terminal-based display, creating a "Human Dependency" trap where input() prompts and print() statements were embedded directly within the core rules. This made automated testing with `pytest` impossible, as the test suite would "hang" indefinitely waiting for manual user input that didn't exist in a scripted environment. To resolve this, I refactored the architecture by extracting all terminal interactions into a dedicated UI Layer and converting the RPSGame class into a collection of pure functions. By ensuring the logic layer only accepts arguments and returns values, I successfully decoupled the engine from the console, achieving 100% test coverage for the core game mechanics.
+
+To move beyond manual local testing, I evolved the project by integrating a CI/CD pipeline via GitHub Actions, authoring a YAML workflow that provisions a fresh Ubuntu Linux environment on every code push.
+
+The final result is a "production-ready" workflow where potential "breaking changes" are caught instantly in a neutral environment before they can ever reach the main branch. This architectural shift demonstrates a professional commitment to modern DevOps standards, data integrity, and software reliability. By treating the codebase as a verifiable system rather than just a functional script, the project is now highly maintainable and prepared for further scaling or migration to more complex data layers.
+
+This automated system handles the entire lifecycle of a test run: it sets up the environment, installs necessary project dependencies, and executes the full suite of `pytest` cases in the cloud via a YAML workflow. This transition ensures the core engine remains robust and protected against regression.
+
+### 3. Data Integrity and Handling Non-Deterministic User Exits
+
+One of the more nuanced challenges involved handling user exits; specifically, ensuring that session data wasn't lost when a player used the `q` command to quit. Originally, the exit logic bypassed the data-logging routines, resulting in "dangling" sessions and incomplete history logs.
+
+I addressed this by implementing a formalized "aborted" state within the GameRound model. This allows the system to catch a quit signal as a valid lifecycle event, triggering a graceful shutdown that timestamps and logs the final state to the CSV before termination. This focus on data integrity ensures a reliable and complete audit trail for every user session, regardless of how the game ends.
+
+### 4. Repository Management: Metadata and Cross-Platform Integrity
+
+As the project progressed, I encountered a "noisy" version control history where machine-generated caches (`__pycache__`) and local game data (`RPS_game_data.csv`) were being tracked. The challenge was to remove these files from the remote history without deleting the actual data from my local development environment. I resolved this by using the `git rm --cached` command, which surgically untracked the files while preserving the physical copies on my disk.
+
+Furthermore, to ensure the project remained functional for developers on macOS or Linux, I implemented a `.gitattributes` file to handle line-ending normalization (LF vs CRLF). These steps ensure the repository remains lightweight, private, and functional for developers on any operating system—demonstrating a professional commitment to collaborative standards and clean configuration management, ensuring the codebase is production-ready for any environment.
 
 ---
 
@@ -201,36 +227,6 @@ This project demonstrates my ability to write testable, maintainable Python code
 - **Code readability & maintainability 👓:** Prioritizing clean naming conventions and modular structure so that the codebase remains easy to navigate and update long after the initial build.
 
 ---
-
-## 🧩 **Technical Challenges & Solutions**
-
-### 1. **Architecting for Scalability: From Procedural to Modular OOP**
-
-My initial implementation of the game began as a single procedural script where logic, file I/O, and UI were all tightly coupled. This created a brittle environment where changing a simple data-saving rule risked breaking the entire application flow. To address this, I refactored the codebase into a modular, object-oriented architecture centered on the Separation of Concerns.
-
-By isolating responsibilities into specialized classes; a `GameDataManager` for file I/O, a `WelcomeMessage` for UI, and a `RPSGame` for core rules. I transformed a simple script into a scalable system. By applying Separation of Concerns (SoC) and Object-Oriented Programming (OOP) to decouple the UI, Logic, and Data layers, I've ensured maximum maintainability and a clear path for future feature expansion.
-
-### 2. Architecting for Testability and Continuous Integration
-
-In the early development phase, the game’s mathematical logic was tightly coupled with its terminal-based display, creating a "Human Dependency" trap where input() prompts and print() statements were embedded directly within the core rules. This made automated testing with `pytest` impossible, as the test suite would "hang" indefinitely waiting for manual user input that didn't exist in a scripted environment. To resolve this, I refactored the architecture by extracting all terminal interactions into a dedicated UI Layer and converting the RPSGame class into a collection of pure functions. By ensuring the logic layer only accepts arguments and returns values, I successfully decoupled the engine from the console, achieving 100% test coverage for the core game mechanics.
-
-To move beyond manual local testing, I evolved the project by integrating a CI/CD pipeline via GitHub Actions, authoring a YAML workflow that provisions a fresh Ubuntu Linux environment on every code push.
-
-The final result is a "production-ready" workflow where potential "breaking changes" are caught instantly in a neutral environment before they can ever reach the main branch. This architectural shift demonstrates a professional commitment to modern DevOps standards, data integrity, and software reliability. By treating the codebase as a verifiable system rather than just a functional script, the project is now highly maintainable and prepared for further scaling or migration to more complex data layers.
-
-This automated system handles the entire lifecycle of a test run: it sets up the environment, installs necessary project dependencies, and executes the full suite of `pytest` cases in the cloud via a YAML workflow. This transition ensures the core engine remains robust and protected against regression.
-
-### 3. Data Integrity and Handling Non-Deterministic User Exits
-
-One of the more nuanced challenges involved handling user exits; specifically, ensuring that session data wasn't lost when a player used the `q` command to quit. Originally, the exit logic bypassed the data-logging routines, resulting in "dangling" sessions and incomplete history logs.
-
-I addressed this by implementing a formalized "aborted" state within the GameRound model. This allows the system to catch a quit signal as a valid lifecycle event, triggering a graceful shutdown that timestamps and logs the final state to the CSV before termination. This focus on data integrity ensures a reliable and complete audit trail for every user session, regardless of how the game ends.
-
-### 4. Repository Management: Metadata and Cross-Platform Integrity
-
-As the project progressed, I encountered a "noisy" version control history where machine-generated caches (`__pycache__`) and local game data (`RPS_game_data.csv`) were being tracked. The challenge was to remove these files from the remote history without deleting the actual data from my local development environment. I resolved this by using the `git rm --cached` command, which surgically untracked the files while preserving the physical copies on my disk.
-
-Furthermore, to ensure the project remained functional for developers on macOS or Linux, I implemented a `.gitattributes` file to handle line-ending normalization (LF vs CRLF). These steps ensure the repository remains lightweight, private, and functional for developers on any operating system—demonstrating a professional commitment to collaborative standards and clean configuration management, ensuring the codebase is production-ready for any environment.
 
 ## 📦 **Libraries & Modules Used**
 
