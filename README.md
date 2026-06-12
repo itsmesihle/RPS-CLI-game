@@ -57,15 +57,38 @@ After the set number of rounds, a final scoreboard summary is displayed. After w
 
 ---
 
+## 📌 **Project Description & Engineering Objectives**
+
+This console-based Rock–Paper–Scissors system transforms a historically simple game into a robust, enterprise-grade architecture. Built to demonstrate advanced software engineering workflows, the project models clean Object-Oriented Programming (OOP) principles, rigorous test-driven design, and containerized deployment infrastructure.
+
+### The Core Experience
+The application greets players with dynamic ASCII-art title sequences before prompting them for an interactive session layout:
+
+![An image of the ASCII-art welcome screen.](media/images/Screenshot%20(782).png "ASCII-art welcome")
+
+During live gameplay, the user is prompted to select their move:
+* **(r)** Rock
+* **(p)** Paper
+* **(s)** Scissors
+
+The engine evaluates input rules, determines the outcome, and seamlessly executes an atomic database transaction. Match metrics—including precise synchronized UTC timestamps, running scores, and session states—are instantly committed to a relational SQLite engine.
+
+![Winner is determined](media/images/Screenshot%20(783).png "Winner is determined")
+
+Upon a graceful or forced session exit, a finalized statistical scoreboard summary is generated, and a local historical CSV audit trail is updated, ensuring complete data consistency across both flat-file and relational storage layers.
+
+---
+
 ## ▶️ Deployment and Execution
 
 You can run this system either as a local Python script or as an isolated, containerized environment using Docker.
 
 ### Option A: Running via Docker Hub Container (Recommended)
 
-This system is fully containerized and published to Docker Hub. You do not need Python, Git, or any local dependencies installed on your host system—only Docker.
+This system is fully containerized and published to Docker Hub. You do not need Python, Git, or any local dependencies installed on your host system - only Docker.
 
 **1. Pull the public image directly from Docker Hub:**
+
 ```bash
 docker pull itsmesihle/rps-cli-game:latest
 ```
