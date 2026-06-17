@@ -37,15 +37,12 @@ This console-based Rock-Paper-Scissors system transforms a historically simple g
 
 ### The Core Experience
 
-
 The application greets players with dynamic ASCII-art title sequences before prompting them for an interactive session layout:
 
 ![gif image of live gameplay](media/images/rps_demo_final1.gif "gif image of live gameplay")
 
 During live gameplay, the user is prompted to select their move:
-* **(r)** Rock
-* **(p)** Paper
-* **(s)** Scissors
+* **(r)** Rock | **(p)** Paper | **(s)** Scissors
 
 The engine evaluates input rules, determines the outcome, and seamlessly executes an atomic database transaction. Match metrics including precise synchronized UTC timestamps, running scores, and session states are committed to a relational SQLite engine.
 
@@ -59,7 +56,7 @@ You can run this system either as a local Python script or as an isolated, conta
 
 ### Option A: Running via Docker Hub Container (Recommended)
 
-#### See It In Action:
+You do not need Python, Git, or any local dependencies installed on your host system—only the Docker engine.
 
 <p align="center">
   <img src="media/images/docker_demo1.gif" alt="Docker Demo Run" width="100%">
@@ -90,7 +87,8 @@ Requires Python >= 3.10 and a standard terminal environment
 **1. Navigate to your project path/location:**
 
 ```bash
-cd path/to/your/project
+git clone [https://github.com/itsmesihle/RPS-CLI-Game.git](https://github.com/itsmesihle/RPS-CLI-Game.git)
+cd RPS-CLI-Game
 ```
 
 **2. Install core dependencies:**
@@ -148,7 +146,7 @@ The project utilizes a **Layered Orchestration** model following strict clean ar
 
 ### 1. **Architecting for Scalability: From Procedural to Modular OOP**
 
-My initial implementation of the game began as a single procedural script where logic, file I/O, and UI were all tightly coupled. This created a brittle environment where changing a simple data-saving rule risked breaking the entire application flow. To address this, I refactored the codebase into a modular, object-oriented architecture centered on the Separation of Concerns.
+My initial implementation of the game began as a single procedural script where logic, file I/O, and UI were all tightly coupled. This created a brittle environment where changing a simple data-saving rule risked breaking the entire application flow. To address this, I refactored the codebase into a modular, object-oriented architecture centered on the Separation of Concerns (SoC) by isolating responsibilities into specialized classes: GameDataManager for relational storage operations, GameUI for terminal rendering, and RPSGame for pure business logic.
 
 By isolating responsibilities into specialized classes; a `GameDataManager` for file I/O, a `WelcomeMessage` for UI, and a `RPSGame` for core rules. I transformed a simple script into a scalable system. By applying Separation of Concerns (SoC) and Object-Oriented Programming (OOP) to decouple the UI, Logic, and Data layers, I've ensured maximum maintainability and a clear path for future feature expansion.
 
@@ -256,7 +254,7 @@ To run this application, the engine utilizes a mix of Python standard built-in u
 
 ## 📝 **Project Roadmap**
 
-This RPS game is still being worked on, constantly being updated
+This ecosystem is under active development to continuously demonstrate modern software distribution and data analytics workflows.
 
 ### Completed Milestone Enhancements
 - Published Production-Ready Container Image - pushed the optimized multi-stage build directly to [Docker Hub (itsmesihle/rps-cli-game)](https://hub.docker.com/r/itsmesihle/rps-cli-game) for zero-dependency, single-command cloud execution.
