@@ -172,12 +172,12 @@ class GameEngine:
             print(f"\nYou win! {u_name.capitalize()} beats {c_name}.")
             self.user_score += 1
         else:
-            print(f"\n You lose! {c_name.capitalize()} beats {u_name}.")
+            print(f"\nYou lose! {c_name.capitalize()} beats {u_name}.")
             self.computer_score += 1
 
     def _display_final_score(self):
         print("\n" + "-" * 10 , " FINAL SCORE ", "-" *10)
-        print(f"\nYou: {self.user_score} || CPU: {self.computer_score}")
+        print(f"\nYou: {self.user_score} || CPU: {self.computer_score}\n")
         print("-" * 35)
 
 if __name__ == "__main__":
