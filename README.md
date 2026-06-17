@@ -235,11 +235,11 @@ To maintain a clean and production-ready workspace, this repository completely s
 
 To run this application, the engine utilizes a mix of Python standard built-in utilities and pinned third-party packages managed within the container environment:
 
-* **Third-Party Packages (Installed via PyPI/Pip):**
+#### Third-Party Packages (Installed via PyPI/Pip):
 - `pytest` – Drives the automated unit testing architecture to isolate and validate the stateless core logic.
 - `pyfiglet` – Implements ASCII-art rendering algorithms inside the UI layer for an immersive terminal experience.
 
-* **Python Standard Standard Libraries:**
+#### Python Standard Standard Libraries:
 - `random` – Powers computer move randomisation subroutines.
 - `csv` & `os` – Manages local persistent auditing streams and cross-platform file paths.
 - `datetime` – Generates accurate, synchronized timestamps for match metrics.
@@ -250,14 +250,14 @@ To run this application, the engine utilizes a mix of Python standard built-in u
 
 This RPS game is still being worked on, constantly being updated
 
-### **Completed Milestone Enhancements**
+### Completed Milestone Enhancements
 - Published Production-Ready Container Image - pushed the optimized multi-stage build directly to [Docker Hub (itsmesihle/rps-cli-game)](https://hub.docker.com/r/itsmesihle/rps-cli-game) for zero-dependency, single-command cloud execution.
 - Migrated local history storage from flat file CSV parsing to a normalized SQLite relational schema.
 - Implemented strict folder modularity isolating business code into a dedicated `/src` architecture.
 - Developed comprehensive containerization parameters using custom `Dockerfile` blueprints.
 - Resolved module visibility conflicts inside the remote GitHub Actions cloud virtualization matrix.
 
-### **Future Roadmap Features**
+### Future Roadmap Features
 - Automate Docker Hub Publishing via CI/CD.  Extend the existing GitHub Actions workflow to automatically build and push the Docker image on every tagged release.
 - Implement an automated timeout fallback when users go "Away From Keyboard."
 - Incorporate pattern-tracking analytics algorithms to implement dynamic game difficulty adjustment.
