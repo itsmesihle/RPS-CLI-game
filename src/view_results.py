@@ -2,7 +2,7 @@ import sqlite3
 from datetime import datetime
 
 def view_history():
-    db_name = "rps_history.db"
+    db_name = "../data/rps_history.db"
     
     try:
         # 1. Connect to the database

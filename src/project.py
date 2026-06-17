@@ -26,7 +26,7 @@ class GameRound:
 # 1. DATA HANDLING LAYER
 class GameDataManager:
     """Manages the sqlite3 database for persistent game history"""
-    def __init__(self, db_name="rps_history.db"):
+    def __init__(self, db_name="../data/rps_history.db"):
         self.db_name = db_name
         self._initialize_db()
 
