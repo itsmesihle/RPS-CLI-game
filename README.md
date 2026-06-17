@@ -59,9 +59,13 @@ You can run this system either as a local Python script or as an isolated, conta
 
 ### Option A: Running via Docker Hub Container (Recommended)
 
+#### See It In Action:
 
-![Docker Demo Run](media/images/docker_demo1.gif)
-*Figure 1: Demonstration of pulling and executing the Rock-Paper-Scissors container from Docker Hub.*
+<p align="center">
+  <img src="media/images/docker_demo1.gif" alt="Docker Demo Run" width="100%">
+  <br>
+  <b>Running the decoupled game engine natively inside an isolated Docker container environment</b>
+</p>
 
 This system is fully containerized and published to Docker Hub. You do not need Python, Git, or any local dependencies installed on your host system - only Docker.
 
@@ -78,7 +82,8 @@ docker pull itsmesihle/rps-cli-game:latest
 docker run -it itsmesihle/rps-cli-game:latest
 ```
 
-### ▶️ **Option B: Running as a Standard Local Python Script**
+
+### ▶️ Option B: Running as a Standard Local Python Script
 Requires Python >= 3.10 and a standard terminal environment
 
 
