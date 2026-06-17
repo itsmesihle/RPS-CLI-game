@@ -70,7 +70,8 @@ docker pull itsmesihle/rps-cli-game:latest
 **2. Execute interactive game loop within container:**
 
 ```bash
-docker run -it --name rps-game itsmesihle/rps-cli-game:latest
+
+docker run -it itsmesihle/rps-cli-game:latest
 ```
 
 ### ▶️ **Option B: Running as a Standard Local Python Script**
