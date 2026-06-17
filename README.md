@@ -18,8 +18,6 @@ ___
 
 ## 📚 Table of Contents
 
-## 📚 Table of Contents
-
 - [Project Description & Value Proposition](#-project-description--value-proposition)
 - [Deployment and Execution](#️-deployment-and-execution)
 - [System Architecture](#️-system-architecture)
@@ -38,9 +36,11 @@ ___
 This console-based Rock-Paper-Scissors system transforms a historically simple game into a robust, enterprise-grade architecture. Built to demonstrate advanced software engineering workflows, the project models clean Object-Oriented Programming (OOP) principles, rigorous test-driven design, and containerized deployment infrastructure.
 
 ### The Core Experience
+
+
 The application greets players with dynamic ASCII-art title sequences before prompting them for an interactive session layout:
 
-![An image of the ASCII-art welcome screen.](media/images/Screenshot%20(782).png "ASCII-art welcome")
+![gif image of live gameplay](media/images/rps_demo_final1.gif "gif image of live gameplay")
 
 During live gameplay, the user is prompted to select their move:
 * **(r)** Rock
@@ -48,8 +48,6 @@ During live gameplay, the user is prompted to select their move:
 * **(s)** Scissors
 
 The engine evaluates input rules, determines the outcome, and seamlessly executes an atomic database transaction. Match metrics including precise synchronized UTC timestamps, running scores, and session states are committed to a relational SQLite engine.
-
-![Winner is determined](media/images/Screenshot%20(783).png "Winner is determined")
 
 Upon a graceful or forced session exit, a finalized statistical scoreboard summary is generated, and a local historical CSV audit trail is updated, ensuring complete data consistency across both flat-file and relational storage layers.
 
