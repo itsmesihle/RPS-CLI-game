@@ -59,6 +59,10 @@ You can run this system either as a local Python script or as an isolated, conta
 
 ### Option A: Running via Docker Hub Container (Recommended)
 
+
+![Docker Demo Run](media/images/docker_demo1.gif)
+*Figure 1: Demonstration of pulling and executing the Rock-Paper-Scissors container from Docker Hub.*
+
 This system is fully containerized and published to Docker Hub. You do not need Python, Git, or any local dependencies installed on your host system - only Docker.
 
 **1. Pull the public image directly from Docker Hub:**
